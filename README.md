@@ -16,9 +16,9 @@ htdoc目录下执行：
 later 传代码操作：
 
 demo目录下：
-#git add .
-#git commit -m 'changing'
-#git push origin master
+# git add .
+# git commit -m 'changing'
+# git push origin master
 
 later 更新代码操作：
 # git pull
