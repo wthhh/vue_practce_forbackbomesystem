@@ -8,8 +8,7 @@ import util from '@/utils'
 Vue.use(Router)
 
 export const publicRouter = [
-  { path: '/home', component: () => import('@/views/public/Home'), hidden: true },
-  { path: '/login', component: () => import('@/views/public/Login'), hidden: true },
+  { path: '/index', component: () => import('@/views/public/Index'), hidden: true },
   { path: '/404', component: () => import('@/views/public/404'), hidden: true },
   { path: '/401', component: () => import('@/views/public/401'), hidden: true },
   { path: '/lock', component: () => import('@/views/public/Lock'), hidden: true },
@@ -44,11 +43,8 @@ export const router = new Router({
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  //sessionStorage.setItem('token', 0)
-  //sessionStorage.setItem('menus', JSON.stringify())
-  //sessionStorage.setItem('user', JSON.stringify(admin))
   if (sessionStorage.getItem('token')) {
-    if (to.path === '/login') {
+    if (to.path === '/index') {
       next({path: '/'})
     } else {
       if (!store.getters.getUserInfo.length) {
@@ -70,7 +66,7 @@ router.beforeEach((to, from, next) => {
           sessionStorage.removeItem('token')
           sessionStorage.removeItem('menus')
           store.dispatch('setPrivateRouter', null)
-          next({path: '/login'})
+          next({path: '/index'})
         }
       } else {
         if (JSON.stringify(to.meta) === '{}' && to.name) {
@@ -81,8 +77,8 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
-    if ((to.path !== '/home') && (to.path !== '/login'))  {
-      next({path: '/home'})
+    if (to.path !== '/index') {
+      next({path: '/index'})
     } else {
       next()
     }
