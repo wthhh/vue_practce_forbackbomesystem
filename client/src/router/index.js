@@ -44,8 +44,12 @@ export const router = new Router({
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  if(to.path === '/front'){
-    next()
+  if(to.path !== '/login'){
+    if(to.path === '/front')
+      next()
+    else{
+      next({path: '/front'})
+    }
   }
   else{
       if (sessionStorage.getItem('token')) {
