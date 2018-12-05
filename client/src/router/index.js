@@ -8,8 +8,8 @@ import util from '@/utils'
 Vue.use(Router)
 
 export const publicRouter = [
-  { path: '/home', component: () => import('@/views/public/Home'), hidden: true },
   { path: '/login', component: () => import('@/views/public/Login'), hidden: true },
+  { path: '/front', component: () => import('@/views/public/Front'), hidden: true },
   { path: '/404', component: () => import('@/views/public/404'), hidden: true },
   { path: '/401', component: () => import('@/views/public/401'), hidden: true },
   { path: '/lock', component: () => import('@/views/public/Lock'), hidden: true },
@@ -44,10 +44,11 @@ export const router = new Router({
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  //sessionStorage.setItem('token', 0)
-  //sessionStorage.setItem('menus', JSON.stringify())
-  //sessionStorage.setItem('user', JSON.stringify(admin))
-  if (sessionStorage.getItem('token')) {
+  if(to.path === '/front'){
+    next()
+  }
+  else{
+      if (sessionStorage.getItem('token')) {
     if (to.path === '/login') {
       next({path: '/'})
     } else {
@@ -81,11 +82,12 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
-    if ((to.path !== '/home') && (to.path !== '/login'))  {
-      next({path: '/home'})
+    if (to.path !== '/login') {
+      next({path: '/login'})
     } else {
       next()
     }
+  }
   }
   NProgress.done()
 })

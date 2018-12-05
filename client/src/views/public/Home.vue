@@ -10,7 +10,6 @@
       v-divider
       Menu
     Header(:clipped="clipped" :miniVariant="miniVariant" :drawer="drawer" @setDrawer="getDrawer" @setClipped="getClipped" @setFixed="getFixed" @setMiniVariant="getMiniVariant")
-    HeaderPublic(:clipped="clipped" :miniVariant="miniVariant" :drawer="drawer" @setDrawer="getDrawer" @setClipped="getClipped" @setFixed="getFixed" @setMiniVariant="getMiniVariant")
     v-layout
       transition(name="fade-transform" mode="out-in")
         router-view
@@ -19,13 +18,12 @@
 <script>
 import Menu from '@/views/components/public/Menu'
 import Header from '@/views/components/public/Header'
-import HeaderPublic from '@/views/components/public/HeaderPublic'
 import Footer from '@/views/components/public/Footer'
 export default {
   name: 'App',
   components: {
     Footer,
-    HeaderPublic,
+    Header,
     Menu
   },
   data () {

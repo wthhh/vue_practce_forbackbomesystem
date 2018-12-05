@@ -1,24 +1,22 @@
 <template lang="pug">
-  v-content
-    v-navigation-drawer(:mini-variant="miniVariant" :clipped="clipped" v-model="drawer" fixed app)
-      div.pa-4.text-xs-center
-        div.display-1.py-4(style="color:#1565C0") {{setting['name']}}
-        div
-          v-btn(dark href="https://github.com/master-nan/vuetify-admin" color="primary")
-            v-icon(left, dark) star
-            span Github
-      v-divider
-      Menu
+  v-content      
     Header(:clipped="clipped" :miniVariant="miniVariant" :drawer="drawer" @setDrawer="getDrawer" @setClipped="getClipped" @setFixed="getFixed" @setMiniVariant="getMiniVariant")
     v-layout
       transition(name="fade-transform" mode="out-in")
         router-view
+    v-list
+        v-btn( href="/front")
+          v-list-tile-title front
+        v-btn( href="/login")
+          v-list-tile-title 登陆
+
     Footer(:fixed="fixed")
 </template>
 <script>
 import Menu from '@/views/components/public/Menu'
 import Header from '@/views/components/public/Header'
 import Footer from '@/views/components/public/Footer'
+import util from '@/utils'
 export default {
   name: 'App',
   components: {
@@ -51,8 +49,22 @@ export default {
     },
     getDrawer (v) {
       this.drawer = v
+    },
+    async handleCommand (e) {
+      switch (e) {
+        case 'login':
+          util.toRouter('hh', this)
+          break
+        case 'front':
+          util.toRouter('login', this)
+
+          break
+        default:
+          console.log(e)
+      }
     }
-  }
+  },
+      
 }
 </script>
 <style>

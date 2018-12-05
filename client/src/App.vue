@@ -5,11 +5,7 @@
 </template>
 
 <script>
-import Index from './views/components/public/Menu.vue'
 export default {
-  name: 'App',
-  components: {
-    Index
-  }
+  name: 'App'
 }
 </script>
