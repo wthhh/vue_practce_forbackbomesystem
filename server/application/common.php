@@ -10,3 +10,14 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+
+function msg($code, $data, $error = '', $count = 0)
+{
+    $data = [
+      'code'  => $code ,
+      'data'  => $data ,
+      'error' => $error,
+      'count' => $count
+    ];
+    return json_encode($data);
+}

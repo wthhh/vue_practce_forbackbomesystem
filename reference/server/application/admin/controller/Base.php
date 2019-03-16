@@ -20,7 +20,7 @@ class Base extends Controller
 
     public function index()
     {
-        echo "aaa";
+        return 'aa';
     }
 
     public function login()
