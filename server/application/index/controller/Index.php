@@ -2,7 +2,7 @@
 namespace app\index\controller;
 use think\Request;
 
-class Index
+class Base
 {
 	public function _initialize()
     {
