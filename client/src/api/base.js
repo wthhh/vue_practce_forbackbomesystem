@@ -6,8 +6,8 @@ let path = 'base'
 let login = async (data) => {
   let url = path + '/login'
   let d = {
-    'username': data.username,
-    'password': md5(data.password)
+    'admin_name': data.admin_name,
+    'password': data.password
   }
   let result = await http.post(url, d)
   return result

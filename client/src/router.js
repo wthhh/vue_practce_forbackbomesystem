@@ -9,10 +9,7 @@ Vue.use(Router)
 
 export const publicRouter = [
   { path: '/login', component: () => import('@/views/public/Login'), hidden: true },
-  { path: '/front', component: () => import('@/views/public/Front'), hidden: true },
   { path: '/404', component: () => import('@/views/public/404'), hidden: true },
-  { path: '/401', component: () => import('@/views/public/401'), hidden: true },
-  { path: '/lock', component: () => import('@/views/public/Lock'), hidden: true },
   { path: '/refresh', component: () => import('@/views/public/Refresh'), name: 'refresh', hidden: true },
   { path: '*', component: () => import('@/views/public/404'), hidden: true }
 ]
