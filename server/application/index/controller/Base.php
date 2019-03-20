@@ -1,8 +1,9 @@
 <?php
 namespace app\index\controller;
 use think\Request;
+use think\Controller;
 
-class Base
+class Base extends Controller
 {
 	public function _initialize()
     {
@@ -14,12 +15,13 @@ class Base
         header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, sessionId, X-Requested-Token");
         $this->request = Request::instance();
         $this->param = $this->request->param();
+        dump($this->param);
     }
     # init
 
     public function index()
     {
-        return 'test';
+        return view('index');
     }
     # 这个index 控制器的调用是 server/public/index.php/Index/index
     # 这些都是在 router.php 里面定义的 

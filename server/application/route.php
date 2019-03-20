@@ -10,9 +10,22 @@
 // +----------------------------------------------------------------------
 
 return [
-    '__pattern__' => [
-        'name' => '\w+',
+    // 定义资源路由
+    '__rest__'=>[
+        // menu
+        'menu'      =>  'index/menu',
+        'position'  =>  'index/position',
+        'department'=>  'index/department',
+        'user'      =>  'index/indexUser',
+        'rule'      =>  'index/rule',
+        'setting'   =>  'index/sysConfig',
+    ],
+    '[base]'      => [
+        'index'       => ['index/base/index', ['method' => 'get']],
+        'login'       => ['index/base/login', ['method' => 'post']],
+
     ],
 
-
+    // MISS路由
+    // '__miss__'    => 'index/base/index',
 ];

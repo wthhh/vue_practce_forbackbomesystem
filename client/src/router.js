@@ -9,6 +9,7 @@ Vue.use(Router)
 
 export const publicRouter = [
   { path: '/login', component: () => import('@/views/public/Login'), hidden: true },
+  { path: '/home', component: () => import('@/views/public/Home'), hidden: true },
   { path: '/404', component: () => import('@/views/public/404'), hidden: true },
   { path: '*', component: () => import('@/views/public/404'), hidden: true }
 ]
