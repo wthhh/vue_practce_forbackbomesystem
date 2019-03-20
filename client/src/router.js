@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import vuex from '@/vuex'
+import store from '@/store'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
 import comps from './components'
@@ -9,9 +9,10 @@ Vue.use(Router)
 
 export const publicRouter = [
   { path: '/login', component: () => import('@/views/public/Login'), hidden: true },
-  { path: '/index', component: () => import('@/views/public/Home'), hidden: true },
+  { path: '/home', component: () => import('@/views/public/Home'), hidden: true },
   { path: '/404', component: () => import('@/views/public/404'), hidden: true },
-  { path: '*', component: () => import('@/views/public/404'), hidden: true }
+  { path: '/refresh', component: () => import('@/views/public/Refresh'), name: 'refresh', hidden: true },
+  { path: '*', component: () => import('@/views/public/Index'), hidden: true }
 ]
 
 export const currentRouter = [

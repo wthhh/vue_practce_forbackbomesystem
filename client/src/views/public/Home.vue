@@ -5,7 +5,7 @@
         div.display-1.py-4(style="color:#1565C0") {{setting['name']}}
         
       v-divider
-      Class
+      Sub
     Header(:clipped="clipped" :miniVariant="miniVariant" :drawer="drawer" @setDrawer="getDrawer" @setClipped="getClipped" @setFixed="getFixed" @setMiniVariant="getMiniVariant")
     v-layout
       transition(name="fade-transform" mode="out-in")
@@ -13,15 +13,17 @@
     Footer(:fixed="fixed")
 </template>
 <script>
-import Class from '@/views/components/public/Class'
+import Sub from '@/views/components/public/Sub'
 import Header from '@/views/components/public/Header'
 import Footer from '@/views/components/public/Footer'
 export default {
   name: 'App',
   components: {
+    Sub,
     Footer,
     Header
   },
+
   data () {
     return {
       clipped: false,
@@ -36,6 +38,7 @@ export default {
     }
   },
   methods: {
+    
     getClipped (v) {
       this.clipped = v
     },

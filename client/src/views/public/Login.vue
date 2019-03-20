@@ -56,7 +56,8 @@ export default {
           //sessionStorage.setItem('menus', JSON.stringify(res.data.menus))
           //sessionStorage.setItem('user', JSON.stringify(res.data.user))
           //sessionStorage.setItem('token', res.data.token)
-          util.toRouter('index', this)
+          
+          util.toRouter('home', this)
         } else {
           // console.log(res.data)
           this.$refs.message.open(res.error, 'error')

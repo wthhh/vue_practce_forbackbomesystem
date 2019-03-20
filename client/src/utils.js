@@ -14,13 +14,16 @@ let sleep = (d = 800) => {
 
 let toRouter = (name, vm, data = {}, type = 'params') => {
   if (!name) name = vm.$route.name
+
   if (name === vm.$route.name) {
     vm.$router.push({name: 'refresh', query: { name: name }})
   } else {
     if (type === 'params') {
-      vm.$router.push({name: name, params: data})
+      console.log(vm.$router)
+      vm.$router.push({path: name, params: data})
+      console.log(vm.$router)
     } else {
-      vm.$router.push({name: name, query: data})
+      vm.$router.push({path: name, query: data})
     }
   }
 }

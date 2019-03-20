@@ -8,6 +8,8 @@
         span(v-if='item.redirect===""||index==items.length-1') {{item.meta.title|i18nName('Menu',self)}}
         router-link(v-else :to="item.redirect||item.path") {{item.meta.title|i18nName('Menu',self)}}
     v-spacer
+
+      span {{userInfo['admin_name']}}
     MyMessage(ref="message")
 </template>
 <script>
@@ -22,7 +24,12 @@ export default {
       
     }
   },
-  
+  computed: {
+    userInfo () {
+      console.log(this.$store.getters.getUserInfo)
+      return this.$store.getters.getUserInfo
+    }
+  },
   props: ['clipped', 'miniVariant', 'drawer'],
   methods: {
     setDrawer () {

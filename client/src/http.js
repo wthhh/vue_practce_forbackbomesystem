@@ -56,9 +56,9 @@ let post = async (url = '', params = {}) => {
     baseURL: baseURL,
     data: params
   }
-  console.log(requestConf)
+  // console.log(requestConf)
   let response = await request('post', requestConf)
-  console.log(response)
+  // console.log(response)
   return response
 }
 
