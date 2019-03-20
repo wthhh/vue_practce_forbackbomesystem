@@ -47,7 +47,7 @@ export default {
       if (this.$refs.form.validate()) {
         this.$refs.loading.open()
         let res = await api.base.login(this.form)
-        
+        // console.log(res.code)
         await util.sleep()
         this.$refs.loading.close()
         if (res.code === 1) {
@@ -58,7 +58,7 @@ export default {
           //sessionStorage.setItem('token', res.data.token)
           util.toRouter('index', this)
         } else {
-          console.log(res)
+          // console.log(res.data)
           this.$refs.message.open(res.error, 'error')
         }
       }

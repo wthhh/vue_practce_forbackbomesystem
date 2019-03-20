@@ -15,7 +15,7 @@ class Admin extends Model
             
         } 
         else {
-            $this->error = '账号或密码错误(incorrect account or password)';
+            $this->error = 'incorrect account or password';
             return false;
         }
     }

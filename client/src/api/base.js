@@ -9,8 +9,9 @@ let login = async (data) => {
     'admin_name': data.admin_name,
     'password': data.password
   }
-  console.log(d)
+
   let result = await http.post(url, d)
+  // console.log(result)
   return result
 }
 
