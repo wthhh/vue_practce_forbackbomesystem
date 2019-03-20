@@ -7,15 +7,15 @@
               div.display-3.py-4(style="color:#1565C0") 
             v-card.elevation-12
               v-toolbar(dark color="primary")
-                v-toolbar-title {{ 'Login'|i18nName('Login',self) }}
+                v-toolbar-title Login
                 v-spacer
               v-card-text
                 v-form(ref="form")
-                  v-text-field(prepend-icon="person" v-model="form.username" :rules="[v => !!v || 'Username is required']" :label="i18nName('Login','Username')" type="text")
-                  v-text-field(prepend-icon="lock" v-model="form.password"  :rules="[v => !!v || 'Password is required']" :label="i18nName('Login','Password')" type="password")
+                  v-text-field(prepend-icon="person" v-model="form.admin_name" :rules="[v => !!v || 'Username is required']" type="text")
+                  v-text-field(prepend-icon="lock" v-model="form.password"  :rules="[v => !!v || 'Password is required']" type="password")
               v-card-actions
                 v-spacer
-                v-btn(color="primary" @click="submit") {{ 'Submit'|i18nName('Login',self) }}
+                v-btn(color="primary" @click="submit") Submit
       Footer(:fixed="fixed")
       MyLoading(ref="loading")
       MyMessage(ref="message")
@@ -23,16 +23,14 @@
 <script>
 import Footer from '@/views/components/public/Footer'
 import api from '@/api'
-//import store from '@/store'
 import util from '@/utils'
-import http from '@/utils/http'
 export default {
   data () {
     return {
       self: this,
       gradient: 'to top right, #1A237E, #BBDEFB',
       form: {
-        username: null,
+        admin_name: null,
         password: null
       },
       valid: false,
@@ -44,9 +42,7 @@ export default {
     Footer
   },
   methods: {
-    i18nName (key = '', title = '') {
-      return util.i18nName(key, title, this)
-    },
+
     async submit () {
       if (this.$refs.form.validate()) {
         this.$refs.loading.open()

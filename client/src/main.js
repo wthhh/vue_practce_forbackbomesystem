@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import store from './store'
+import vuex from '@/vuex'
 
 
-import './filters'
+// import './filters'
 
 import 'babel-polyfill'
 import '@mdi/font/css/materialdesignicons.min.css'
@@ -12,7 +12,7 @@ import '@mdi/font/css/materialdesignicons.min.css'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
-import './assets/style/index.less'
+// import './assets/style/index.less'
 
 import MyLoading from '@/views/components/public/Loading.vue'
 import MyMessage from '@/views/components/public/Message.vue'
@@ -33,7 +33,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  store,
+  vuex,
   components: { App },
   template: '<App/>'
 })

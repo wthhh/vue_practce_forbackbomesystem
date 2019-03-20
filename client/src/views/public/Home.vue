@@ -20,8 +20,7 @@ export default {
   name: 'App',
   components: {
     Footer,
-    Header,
-    Menu
+    Header
   },
   data () {
     return {

@@ -1,4 +1,4 @@
-import http from '@/utils/http'
+import http from '../http'
 import md5 from 'js-md5'
 
 let path = 'base'
