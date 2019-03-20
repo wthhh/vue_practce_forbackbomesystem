@@ -16,6 +16,7 @@ class Base extends Controller
         header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, sessionId, X-Requested-Token");
         $this->request = Request::instance();
         $this->param = $this->request->param();
+        dump($this->param);
     }
 
     public function index()

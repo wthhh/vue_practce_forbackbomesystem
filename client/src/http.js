@@ -2,13 +2,14 @@ import axios from 'axios'
 import qs from 'qs'
 import _ from 'lodash'
 
-let baseURL = 'http://localhost/vue_practice/server/public/index.php/'
+let baseURL = 'http://localhost/vue_practice/server/public/index.php/index/'
 
 let request = async (requestMethod = 'get', requestConf) => {
   requestConf.headers = {}
-  requestConf.headers['X-Requested-Token'] = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : null
+  // requestConf.headers['X-Requested-Token'] = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : null
   requestConf.timeout = 5000
   requestConf.method = requestMethod
+  console.log(requestConf)
   let response = await axios.request(requestConf).catch(function (error) {
     let data = {
       code: 404,
@@ -50,8 +51,8 @@ let post = async (url = '', params = {}) => {
     baseURL: baseURL,
     data: params
   }
-
   let response = await request('post', requestConf)
+  // console.log(response)
   return response
 }
 

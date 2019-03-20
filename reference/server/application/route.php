@@ -22,7 +22,7 @@ return [
     ],
     '[base]'      => [
         'index'       => ['admin/base/index', ['method' => 'get']],
-        'login'       => ['admin/base/login', ['method' => 'post']],
+        'login'       => ['admin/base/login', ['method' => 'get']],
         'getSetting'  => ['admin/base/getSetting', ['method' => 'get']],
 
     ],
