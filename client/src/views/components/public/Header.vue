@@ -3,12 +3,8 @@
     v-toolbar-side-icon(@click.stop="setDrawer")
 
     v-toolbar-title Linkstudio-template
-    v-breadcrumbs.bcb(divider="/")
-      v-breadcrumbs-item(v-for="(item,index) in items" :key="item.text" :disabled='item.redirect===""||index==items.length-1')
-        span(v-if='item.redirect===""||index==items.length-1') {{item.meta.title|i18nName('Menu',self)}}
-        router-link(v-else :to="item.redirect||item.path") {{item.meta.title|i18nName('Menu',self)}}
-    v-spacer
-
+      v-tooltip(bottom)
+      v-spacer
       span {{userInfo['admin_name']}}
     MyMessage(ref="message")
 </template>
@@ -26,7 +22,7 @@ export default {
   },
   computed: {
     userInfo () {
-      console.log(this.$store.getters.getUserInfo)
+      // console.log(this.$store.getters.getUserInfo)
       return this.$store.getters.getUserInfo
     }
   },
@@ -35,28 +31,7 @@ export default {
     setDrawer () {
       this.$emit('setDrawer', !this.drawer)
     },
-    setMiniVariant () {
-      this.$emit('setMiniVariant', !this.miniVariant)
-    },
-    setClipped () {
-      this.$emit('setClipped', !this.clipped)
-    },
-    getBreadcrumb () {
-      let matched = this.$route.matched.filter(item => item.name)
-      const first = matched[0]
-      if (first && first.name !== 'index') {
-        matched = [{ path: '/index', meta: { title: 'Home' } }].concat(matched)
-      }
-      this.items = matched
-    }
-  },
-  created () {
-    this.getBreadcrumb()
-  },
-  watch: {
-    '$route' () {
-      this.getBreadcrumb()
-    }
+
   }
 }
 </script>

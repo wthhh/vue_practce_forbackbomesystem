@@ -16,11 +16,10 @@ import 'vuetify/dist/vuetify.min.css'
 
 import MyLoading from '@/views/components/public/Loading.vue'
 import MyMessage from '@/views/components/public/Message.vue'
-import MyComfirm from '@/views/components/public/Comfirm.vue'
+
 
 Vue.component('MyLoading', MyLoading)
 Vue.component('MyMessage', MyMessage)
-Vue.component('MyComfirm', MyComfirm)
 
 
 Vue.use(Vuetify, {

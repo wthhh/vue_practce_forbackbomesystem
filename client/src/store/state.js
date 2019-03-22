@@ -1,7 +1,5 @@
 const state = {
-  privateRouter: [],
-  userInfo: [],
-  setting: []
+  userInfo: []
 }
 
 export default state

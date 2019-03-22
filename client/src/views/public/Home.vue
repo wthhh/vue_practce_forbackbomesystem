@@ -2,24 +2,25 @@
   v-content
     v-navigation-drawer(:mini-variant="miniVariant" :clipped="clipped" v-model="drawer" fixed app)
       div.pa-4.text-xs-center
-        div.display-1.py-4(style="color:#1565C0") {{setting['name']}}
-        
+        div.display-1.py-4(style="color:#1565C0")
       v-divider
-      Sub
+      
     Header(:clipped="clipped" :miniVariant="miniVariant" :drawer="drawer" @setDrawer="getDrawer" @setClipped="getClipped" @setFixed="getFixed" @setMiniVariant="getMiniVariant")
     v-layout
       transition(name="fade-transform" mode="out-in")
+        Time
         router-view
     Footer(:fixed="fixed")
 </template>
 <script>
-import Sub from '@/views/components/public/Sub'
+import Time from '@/views/components/public/Time'
 import Header from '@/views/components/public/Header'
 import Footer from '@/views/components/public/Footer'
+
 export default {
   name: 'App',
   components: {
-    Sub,
+    Time,
     Footer,
     Header
   },
@@ -33,9 +34,7 @@ export default {
     }
   },
   computed: {
-    setting () {
-      return this.$store.getters.getSetting
-    }
+   
   },
   methods: {
     

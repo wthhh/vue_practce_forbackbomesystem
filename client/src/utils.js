@@ -19,9 +19,9 @@ let toRouter = (name, vm, data = {}, type = 'params') => {
     vm.$router.push({name: 'refresh', query: { name: name }})
   } else {
     if (type === 'params') {
-      console.log(vm.$router)
+      // console.log(vm.$router)
       vm.$router.push({path: name, params: data})
-      console.log(vm.$router)
+      // console.log(vm.$router)
     } else {
       vm.$router.push({path: name, query: data})
     }

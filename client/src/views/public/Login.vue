@@ -54,9 +54,9 @@ export default {
           
           this.$refs.message.open('登录成功', 'success')
           //sessionStorage.setItem('menus', JSON.stringify(res.data.menus))
-          //sessionStorage.setItem('user', JSON.stringify(res.data.user))
+          sessionStorage.setItem('user', JSON.stringify(res.data))
           //sessionStorage.setItem('token', res.data.token)
-          
+          // console.log(sessionStorage)
           util.toRouter('home', this)
         } else {
           // console.log(res.data)
@@ -64,24 +64,8 @@ export default {
         }
       }
     }
-   //下面是获取cookie的
-    /*async getData () {
-      if (store.getters.getSetting.length) {
-        this.name = store.getters.getSetting.name
-      } else {
-        this.loading = true
-        let res = await api.base.getSetting()
-        util.response(res, this)
-        this.loading = false
-        if (res.code === 1) {
-          this.name = res.data.name
-          sessionStorage.setItem('setting', JSON.stringify(res.data))
-        }
-      }
-    }*/
-  },
-  /*created () {
-    this.getData()
-  }*/
+
+  }
+
 }
 </script>
