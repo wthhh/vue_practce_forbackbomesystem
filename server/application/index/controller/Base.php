@@ -28,7 +28,25 @@ class Base extends Controller
 
     public function login()
     {
-    	$admin_name = $this->param['admin_name'];
+        $stu_id = $this->param['stu_id'];
+        // $admin_name = '';
+        // $password = '';
+        # param post data 
+        $user = model('user');
+        $data = [
+          'stu_id' => $stu_id,
+        ];
+        $ret  = $user->getUserLogin($data);
+        if($ret){
+            return msg(1,$ret);
+        }
+        else{
+            return msg(404, null, $user->getError());
+        }
+    }
+    public function adminlogin()
+    {
+        $admin_name = $this->param['admin_name'];
         $password = $this->param['password'];
         // $admin_name = '';
         // $password = '';
@@ -41,10 +59,10 @@ class Base extends Controller
         ];
         $ret  = $user->getUserLogin($data);
         if($ret){
-        	return msg(1,$ret);
+            return msg(1,$ret);
         }
         else{
-        	return msg(404, null, $user->getError());
+            return msg(404, null, $user->getError());
         }
     }
 }

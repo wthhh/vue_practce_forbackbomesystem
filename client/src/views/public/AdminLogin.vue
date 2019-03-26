@@ -7,11 +7,12 @@
               div.display-3.py-4(style="color:#1565C0") 
             v-card.elevation-12
               v-toolbar(dark color="primary")
-                v-toolbar-title Login
+                v-toolbar-title AdminLogin
                 v-spacer
               v-card-text
                 v-form(ref="form")
-                  v-text-field(prepend-icon="person" v-model="form.stu_id" :rules="[v => !!v || 'Student ID is required']" type="text")
+                  v-text-field(prepend-icon="person" v-model="form.admin_name" :rules="[v => !!v || 'Admin name is required']" type="text")
+                  v-text-field(prepend-icon="lock" v-model="form.password"  :rules="[v => !!v || 'Password is required']" type="password")
               v-card-actions
                 v-spacer
                 v-btn(color="primary" @click="submit") Submit
@@ -29,7 +30,8 @@ export default {
       self: this,
       gradient: 'to top right, #1A237E, #BBDEFB',
       form: {
-        stu_id: '1',
+        admin_name: 'admin',
+        password: '111111'
       },
       valid: false,
       fixed: false
@@ -44,7 +46,8 @@ export default {
     async submit () {
       if (this.$refs.form.validate()) {
         this.$refs.loading.open()
-        let res = await api.base.login(this.form)
+        let res = await api.base.adminlogin(this.form)
+        // console.log(res.code)
         await util.sleep()
         this.$refs.loading.close()
         if (res.code === 1) {

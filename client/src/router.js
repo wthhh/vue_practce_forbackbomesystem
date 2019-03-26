@@ -9,8 +9,10 @@ Vue.use(Router)
 
 export const publicRouter = [
   { path: '/login', component: () => import('@/views/public/Login'), hidden: true },
+  { path: '/adminlogin', component: () => import('@/views/public/AdminLogin'), hidden: true },
   { path: '/home', component: () => import('@/views/public/Home'), hidden: true },
   { path: '/404', component: () => import('@/views/public/404'), hidden: true },
+  { path: '/submit', component: () =>import('@/views/public/submit'),hidden: true},
   { path: '*', component: () => import('@/views/public/Home'), hidden: true }
 ]
 
@@ -47,8 +49,13 @@ router.beforeEach((to,from, next) =>{
 
   else{
     // 如果不是login 则跳转login
-    if (to.path !== '/login') {
-      next({path: '/login'})
+    if (to.path !== '/login') { 
+      if (to.path =='/adminlogin'){
+        next()
+      }
+      else{
+        next({path: '/login'})
+      }
     } 
     else {
       next()

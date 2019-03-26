@@ -9,7 +9,7 @@ let request = async (requestMethod = 'get', requestConf) => {
   // requestConf.headers['X-Requested-Token'] = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : null
   requestConf.timeout = 5000
   requestConf.method = requestMethod
-  // console.log(requestConf)
+   console.log(requestConf)
   let response = await axios.request(requestConf).catch(
     function (error) {
     let data = {
@@ -21,8 +21,8 @@ let request = async (requestMethod = 'get', requestConf) => {
   
     }
   )
-  // console.log('re')
-  // console.log(response)
+   //console.log('re')
+   console.log(response)
   return response.data
 }
 // try catch ?
@@ -56,9 +56,9 @@ let post = async (url = '', params = {}) => {
     baseURL: baseURL,
     data: params
   }
-  // console.log(requestConf)
+   console.log(requestConf)
   let response = await request('post', requestConf)
-  // console.log(response)
+   console.log(response)
   return response
 }
 
