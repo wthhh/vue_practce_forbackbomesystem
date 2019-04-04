@@ -4,9 +4,9 @@ namespace app\index\model;
 
 use think\Model;
 
-class Admin extends Model
+class User extends Model
 {
-	public function getAdminLogin($data)
+	public function getUserLogin($data)
     {
         # no valid here , consider data accurate 
         $res = $this->where($data)->find();

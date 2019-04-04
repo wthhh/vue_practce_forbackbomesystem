@@ -43,10 +43,13 @@ export default {
 
     async submit () {
       if (this.$refs.form.validate()) {
+        console.log('now is validate')
+
         this.$refs.loading.open()
         let res = await api.base.login(this.form)
         await util.sleep()
         this.$refs.loading.close()
+
         if (res.code === 1) {
           
           this.$refs.message.open('登录成功', 'success')
@@ -54,9 +57,11 @@ export default {
           sessionStorage.setItem('user', JSON.stringify(res.data))
           //sessionStorage.setItem('token', res.data.token)
           // console.log(sessionStorage)
+          console.log("now is in async methods")
           util.toRouter('home', this)
         } else {
-          // console.log(res.data)
+          console.log('now is ref data')
+          console.log(res.data)
           this.$refs.message.open(res.error, 'error')
         }
       }

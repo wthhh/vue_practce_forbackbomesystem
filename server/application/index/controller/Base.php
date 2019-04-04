@@ -15,7 +15,7 @@ class Base extends Controller
         header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, sessionId, X-Requested-Token");
         $this->request = Request::instance();
         $this->param = $this->request->param();
-        // dump($this->param);
+        //dump($this->param);
     }
     # init
 
@@ -46,6 +46,8 @@ class Base extends Controller
     }
     public function adminlogin()
     {
+
+		crossDomain:true;
         $admin_name = $this->param['admin_name'];
         $password = $this->param['password'];
         // $admin_name = '';
@@ -56,13 +58,13 @@ class Base extends Controller
         $data = [
           'admin_name' => $admin_name,
           'password' => $password,
-        ];
-        $ret  = $user->getUserLogin($data);
+        ];												
+        $ret  = $user->getAdminLogin($data);
         if($ret){
             return msg(1,$ret);
         }
         else{
-            return msg(404, null, $user->getError());
+            return msg(4040												, null, $user->getError());
         }
     }
 }

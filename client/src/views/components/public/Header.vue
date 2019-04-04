@@ -1,12 +1,15 @@
 <template lang="pug">
-  v-toolbar.primary(app :clipped-left="clipped" dark)
-    v-toolbar-side-icon(@click.stop="setDrawer")
-
-    v-toolbar-title Linkstudio-template
-      v-tooltip(bottom)
-      v-spacer
-      span {{userInfo['admin_name']}}
-    MyMessage(ref="message")
+  <v-toolbar class="primary" app :clipped-left="clipped" dark>
+    <v-toolbar-side-icon @click.stop="setDrawer"></v-toolbar-side-icon>
+      <v-toolbar-title>Linkstudio-template</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <span class="title">{{userInfo['admin_name']}}</span>
+      <v-btn flat dark router :to="end">
+        <span>Sign Out</span>
+          <v-icon right>exit_to_app</v-icon>
+      </v-btn>
+    //- MyMessage(ref="message")
+  </v-toolbar>
 </template>
 <script>
 import api from '@/api'
@@ -15,6 +18,7 @@ export default {
   name: 'top',
   data () {
     return {
+      end:'/login',
       self: this,
       items: null,
       

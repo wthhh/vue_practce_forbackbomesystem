@@ -5,11 +5,14 @@ import _ from 'lodash'
 let baseURL = 'http://localhost/vue_practice/server/public/index.php/index/'
 
 let request = async (requestMethod = 'get', requestConf) => {
+  //console.log('this is requestConf')
+  //console.log(requestConf)
   requestConf.headers = {}
   // requestConf.headers['X-Requested-Token'] = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : null
   requestConf.timeout = 5000
   requestConf.method = requestMethod
-   console.log(requestConf)
+  //console.log(requestMethod)
+  //console.log(requestConf)
   let response = await axios.request(requestConf).catch(
     function (error) {
     let data = {
@@ -17,11 +20,14 @@ let request = async (requestMethod = 'get', requestConf) => {
       data: null,
       error: error + ''
     }
+    //console.log('where is error')
+    console.log(data)
     return {data: data}
   
     }
   )
    //console.log('re')
+   //console.log('now is here')
    console.log(response)
   return response.data
 }
@@ -44,8 +50,8 @@ let del = (url = '', params = {}) => {
     baseURL: baseURL,
     params
   }
-
-  let response = request('delete', requestConf)
+  //console.log(requestConf)
+  let response = request('post', requestConf)
   return response
 }
 
@@ -56,9 +62,9 @@ let post = async (url = '', params = {}) => {
     baseURL: baseURL,
     data: params
   }
-   console.log(requestConf)
+  //console.log(requestConf)
   let response = await request('post', requestConf)
-   console.log(response)
+  //console.log(response)
   return response
 }
 
