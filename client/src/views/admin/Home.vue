@@ -34,9 +34,9 @@
   </v-app>
 </template>
 <script>
-import Time from '@/views/components/public/Time'
-import Header from '@/views/components/public/Header'
-import Footer from '@/views/components/public/Footer'
+import Time from '@/views/components/admin/Time'
+import Header from '@/views/components/admin/Header'
+import Footer from '@/views/components/admin/Footer'
 
 export default {
   name: 'App',

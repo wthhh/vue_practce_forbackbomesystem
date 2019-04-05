@@ -1,5 +1,6 @@
 const getters = {
-  getUserInfo: state => state.userInfo
+  getUserInfo: state => state.userInfo,
+  getAdminInfo: state => state.adminInfo
   
 }
 

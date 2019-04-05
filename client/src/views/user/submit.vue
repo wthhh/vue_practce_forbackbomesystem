@@ -22,7 +22,7 @@
       MyMessage(ref="message")
 </template>
 <script>
-import Footer from '@/views/components/public/Footer'
+import Footer from '@/views/components/user/Footer'
 import api from '@/api'
 import util from '@/utils'
 export default {

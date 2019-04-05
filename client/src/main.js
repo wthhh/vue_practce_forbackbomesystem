@@ -14,8 +14,8 @@ import 'vuetify/dist/vuetify.min.css'
 
 // import './assets/style/index.less'
 
-import MyLoading from '@/views/components/public/Loading.vue'
-import MyMessage from '@/views/components/public/Message.vue'
+import MyLoading from '@/views/components/user/Loading.vue'
+import MyMessage from '@/views/components/user/Message.vue'
 
 
 Vue.component('MyLoading', MyLoading)

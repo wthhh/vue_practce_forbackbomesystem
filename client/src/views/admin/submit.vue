@@ -7,12 +7,13 @@
               div.display-3.py-4(style="color:#1565C0") 
             v-card.elevation-12
               v-toolbar(dark color="primary")
-                v-toolbar-title AdminLogin
+                v-toolbar-title 提交申请
                 v-spacer
               v-card-text
                 v-form(ref="form")
-                  v-text-field(prepend-icon="person" v-model="form.admin_name" :rules="[v => !!v || 'Admin name is required']" type="text")
-                  v-text-field(prepend-icon="lock" v-model="form.password"  :rules="[v => !!v || 'Password is required']" type="password")
+                  v-text-field(prepend-icon="person" v-model="form.user_name" :rules="[v => !!v || 'Username is required']" type="text")
+                  v-text-field(prepend-icon="lock" v-model="form.class"  :rules="[v => !!v || 'class is required']" type="text")
+                  v-text-field(prepend-icon="lock" v-model="form.datail"  :rules="[v => !!v || 'detail is required']" type="text")
               v-card-actions
                 v-spacer
                 v-btn(color="primary" @click="submit") Submit
@@ -21,7 +22,7 @@
       MyMessage(ref="message")
 </template>
 <script>
-import Footer from '@/views/components/public/Footer'
+import Footer from '@/views/components/admin/Footer'
 import api from '@/api'
 import util from '@/utils'
 export default {
@@ -30,8 +31,8 @@ export default {
       self: this,
       gradient: 'to top right, #1A237E, #BBDEFB',
       form: {
-        admin_name: 'admin',
-        password: '111111'
+        admin_name: null,
+        password: null
       },
       valid: false,
       fixed: false
@@ -46,17 +47,13 @@ export default {
     async submit () {
       if (this.$refs.form.validate()) {
         this.$refs.loading.open()
-        let res = await api.base.adminlogin(this.form)
+        let res = await api.base.submit(this.form)
         // console.log(res.code)
         await util.sleep()
         this.$refs.loading.close()
         if (res.code === 1) {
           
-          this.$refs.message.open('登录成功', 'success')
-          //sessionStorage.setItem('menus', JSON.stringify(res.data.menus))
-          sessionStorage.setItem('user', JSON.stringify(res.data))
-          //sessionStorage.setItem('token', res.data.token)
-          // console.log(sessionStorage)
+          this.$refs.message.open('申请成功', 'success')
           util.toRouter('home', this)
         } else {
           // console.log(res.data)

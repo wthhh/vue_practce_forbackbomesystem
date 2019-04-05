@@ -4,6 +4,12 @@ const actions = {
       commit('setUserInfo', data)
       resolve()
     })
+  },
+  setAdminInfo ({commit}, data) {
+    return new Promise(resolve => {
+      commit('setAdminInfo', data)
+      resolve()
+    })
   }
 }
 

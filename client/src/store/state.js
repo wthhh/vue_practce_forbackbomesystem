@@ -1,5 +1,6 @@
 const state = {
-  userInfo: []
+  userInfo: [],
+  adminInfo: []
 }
 
 export default state

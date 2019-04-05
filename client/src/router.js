@@ -10,14 +10,16 @@ import util from './utils'
 Vue.use(Router)
 
 export const publicRouter = [
-  { path: '/login', component: () => import('@/views/public/Login'), hidden: true },
-  { path: '/adminlogin', component: () => import('@/views/public/AdminLogin'), hidden: true },
-  { path: '/home', component: () => import('@/views/public/Home'), hidden: true,children: [{ path: '/home/dashboard', component: Dashboard},  { path: '/home/testdata', component: Testdata}] },
-  //{ path: '/home', component: () => import('@/views/public/Home'), hidden: true },
-  { path: '/404', component: () => import('@/views/public/404'), hidden: true },
-  { path: '/submit', component: () =>import('@/views/public/submit'),hidden: true},
-  { path: '*', component: () => import('@/views/public/Home'), hidden: true }
-]
+    { path: '/admin/login', component: () => import('@/views/admin/Login'), hidden: true },
+    { path: '/admin/home', component: () => import('@/views/admin/Home'), hidden: true },
+    { path: '/admin/404', component: () => import('@/views/admin/404'), hidden: true },
+    { path: '/admin/submit', component: () =>import('@/views/admin/submit'),hidden: true},
+    { path: '/user/login', component: () => import('@/views/user/Login'), hidden: true },
+    { path: '/user/home', component: () => import('@/views/user/Home'), hidden: true },
+    { path: '/user/404', component: () => import('@/views/user/404'), hidden: true },
+    { path: '/user/submit', component: () =>import('@/views/user/submit'),hidden: true},
+    { path: '*',component: () => import('@/views/user/404'),hidden: true}
+  ]
 
 
 
@@ -30,11 +32,12 @@ export const router = new Router({
 router.beforeEach((to,from, next) =>{
   console.log('now it comes to route.js brforeeach function')
   NProgress.start()
+  next()
   if (sessionStorage.getItem('user')){
   // 如果有session 则判断session
-    if (to.path === '/login') {
+    if (to.path === '/user/login') {
       console.log(to.path)
-      next({path: '/home'})
+      next({path: '/admin/home'})
       //如果登录了那么直接跳主页
     } 
     else{
@@ -49,22 +52,22 @@ router.beforeEach((to,from, next) =>{
       next()
       // 因为已经登录所以跳到该页面
     }
-  }
+   }
 
-  else{
-    // 如果不是login 则跳转login
-    if (to.path !== '/login') { 
-      if (to.path =='/adminlogin'){
-        next()
-      }
-      else{
-        next({path: '/login'})
-      }
-    } 
-    else {
-      next()
-    }
-  }
+  // else{
+  //   // 如果不是login 则跳转login
+  //   if (to.path !== '/user/login') { 
+  //     if (to.path =='/admin/login'){
+  //       next()
+  //     }
+  //     else{
+  //       next({path: '/user/login'})
+  //     }
+  //   } 
+  //   else {
+  //     next()
+  //   }
+  // }
     NProgress.done()
 
 })

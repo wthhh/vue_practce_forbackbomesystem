@@ -18,7 +18,7 @@ export default {
   name: 'top',
   data () {
     return {
-      end:'/login',
+      end:'/user/login',
       self: this,
       items: null,
       
