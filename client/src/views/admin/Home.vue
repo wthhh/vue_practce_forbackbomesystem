@@ -37,6 +37,8 @@
 import Time from '@/views/components/admin/Time'
 import Header from '@/views/components/admin/Header'
 import Footer from '@/views/components/admin/Footer'
+import Dashboard from '@/views/components/admin/Dashboard'
+import Testdata from '@/views/components/admin/Testdata'
 
 export default {
   name: 'App',
@@ -53,8 +55,8 @@ export default {
       fixed: false,
       miniVariant: false,
       links:[
-            {icon:'dashboard',text:'Dashboard',route:'/home/dashboard'},
-            {icon:'folder',text:'My Project',route:'/home/testdata'},
+            {icon:'dashboard',text:'Dashboard',route:'/admin/home/dashboard'},
+            {icon:'folder',text:'My Project',route:'/admin/home/testdata'},
         ]
     }
   },
@@ -62,7 +64,9 @@ export default {
    
   },
   methods: {
-    
+    componentsAdd() {
+      this.components.add('Dashboard')
+    },
     getClipped (v) {
       this.clipped = v
     },

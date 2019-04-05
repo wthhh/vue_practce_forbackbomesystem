@@ -54,10 +54,10 @@ export default {
           
           this.$refs.message.open('登录成功', 'success')
           //sessionStorage.setItem('menus', JSON.stringify(res.data.menus))
-          sessionStorage.setItem('user', JSON.stringify(res.data))
+          sessionStorage.setItem('admin', JSON.stringify(res.data))
           //sessionStorage.setItem('token', res.data.token)
           // console.log(sessionStorage)
-          util.toRouter('home', this)
+          util.toRouter('/admin/home', this)
         } else {
           // console.log(res.data)
           this.$refs.message.open(res.error, 'error')

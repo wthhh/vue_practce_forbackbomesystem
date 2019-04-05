@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import http from './http'
-import comps from './components'
+import comps from './components/admin'
 import moment from 'moment'
 
 
