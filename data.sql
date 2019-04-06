@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- 主机： localhost
--- 生成日期： 2019-03-21 03:05:48
--- 服务器版本： 10.1.36-MariaDB
--- PHP 版本： 7.2.10
+-- Host: 127.0.0.1
+-- Generation Time: Apr 06, 2019 at 08:03 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,16 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 数据库： `data`
+-- Database: `data`
 --
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `Admin`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `Admin` (
+CREATE TABLE `admin` (
   `admin_id` int(10) NOT NULL,
   `admin_name` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
@@ -37,43 +37,40 @@ CREATE TABLE `Admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `Admin`
+-- Dumping data for table `admin`
 --
 
-INSERT INTO `Admin` (`admin_id`, `admin_name`, `password`, `aid`, `level`) VALUES
+INSERT INTO `admin` (`admin_id`, `admin_name`, `password`, `aid`, `level`) VALUES
 (1, 'admin', '111111', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `Attribute`
+-- Table structure for table `attribute`
 --
 
-CREATE TABLE `Attribute` (
+CREATE TABLE `attribute` (
   `aid` int(10) NOT NULL COMMENT 'attribute id （主键）',
-  `cid` int(10) NOT NULL COMMENT '关联cid',
+  `sid` int(10) NOT NULL COMMENT '关联cid',
   `aname` varchar(50) NOT NULL COMMENT 'attribute name'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `attribute`
+--
+
+INSERT INTO `attribute` (`aid`, `sid`, `aname`) VALUES
+(1, 1, '关联PJ12018冬'),
+(2, 2, '关联PJ22019春'),
+(3, 3, '关联PJ32019夏');
+
 -- --------------------------------------------------------
 
 --
--- 表的结构 `Class`
+-- Table structure for table `issue`
 --
 
-CREATE TABLE `Class` (
-  `cid` int(10) NOT NULL,
-  `classname` varchar(50) NOT NULL,
-  `content` text NOT NULL COMMENT 'class 内容'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `Issue`
---
-
-CREATE TABLE `Issue` (
+CREATE TABLE `issue` (
   `issue_id` int(10) NOT NULL,
   `pid` int(10) NOT NULL COMMENT '关联pid',
   `title` varchar(50) NOT NULL COMMENT '日志标题',
@@ -81,13 +78,21 @@ CREATE TABLE `Issue` (
   `submit_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '上传时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `issue`
+--
+
+INSERT INTO `issue` (`issue_id`, `pid`, `title`, `content`, `submit_time`) VALUES
+(1, 1, '2018冬测试项目用户01内容', '2018冬测试项目用户01内容', '2019-04-06 15:01:24'),
+(2, 1, '2018冬测试项目用户01内容2', '2018冬测试项目用户01内容2', '2019-04-06 15:02:01');
+
 -- --------------------------------------------------------
 
 --
--- 表的结构 `Project`
+-- Table structure for table `project`
 --
 
-CREATE TABLE `Project` (
+CREATE TABLE `project` (
   `pid` int(10) NOT NULL,
   `pname` varchar(50) NOT NULL COMMENT '项目名称',
   `uid` int(10) NOT NULL COMMENT '关联uid',
@@ -96,97 +101,174 @@ CREATE TABLE `Project` (
   `submit_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '提交时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` (`pid`, `pname`, `uid`, `aid`, `content`, `submit_time`) VALUES
+(1, '2018冬测试项目用户01', 1, 1, '2018冬测试项目用户01内容', '2019-04-06 14:52:36'),
+(2, '2019春测试项目用户01', 1, 2, '2019春测试项目用户01内容', '2019-04-06 14:54:51'),
+(3, '2019秋测试项目用户01', 1, 3, '2019夏测试项目用户01内容', '2019-04-06 14:56:03'),
+(4, '2018冬测试项目用户02', 2, 2, '2018冬测试项目用户02内容', '2019-04-06 14:58:32'),
+(5, '2019春测试项目用户02', 2, 2, '2019春测试项目用户02内容', '2019-04-06 14:59:06'),
+(6, '2019夏测试项目用户02', 2, 2, '2019夏测试项目用户02内容', '2019-04-06 14:59:39');
+
 -- --------------------------------------------------------
 
 --
--- 表的结构 `User`
+-- Table structure for table `section`
 --
 
-CREATE TABLE `User` (
+CREATE TABLE `section` (
+  `sid` int(10) NOT NULL,
+  `classname` varchar(50) NOT NULL,
+  `content` text NOT NULL COMMENT 'class 内容',
+  `build_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `section`
+--
+
+INSERT INTO `section` (`sid`, `classname`, `content`, `build_time`) VALUES
+(1, '2018秋', 'this is lorem detailLorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!', '2019-04-06 15:35:11'),
+(2, '2019春', 'asdasddasdasdaasLorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!d', '2019-04-06 15:35:13'),
+(3, '2019夏', 'safadfdfasdfasdfLorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!', '2019-04-06 15:35:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testdata`
+--
+
+CREATE TABLE `testdata` (
+  `id` int(11) NOT NULL,
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `testdata`
+--
+
+INSERT INTO `testdata` (`id`, `name`, `status`) VALUES
+(11, 'fsadffs', 1),
+(12, 'asfdfsadf', 1),
+(13, 'lly', 1),
+(14, '23132123', 1),
+(15, '123124234', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
   `uid` int(10) NOT NULL,
   `username` varchar(50) NOT NULL COMMENT '用户名',
   `stu_id` varchar(50) NOT NULL COMMENT '学号'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转储表的索引
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`uid`, `username`, `stu_id`) VALUES
+(1, 'eddatt', '01'),
+(2, 'testuser', '02');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- 表的索引 `Admin`
+-- Indexes for table `admin`
 --
-ALTER TABLE `Admin`
+ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
--- 表的索引 `Attribute`
+-- Indexes for table `attribute`
 --
-ALTER TABLE `Attribute`
+ALTER TABLE `attribute`
   ADD PRIMARY KEY (`aid`);
 
 --
--- 表的索引 `Class`
+-- Indexes for table `issue`
 --
-ALTER TABLE `Class`
-  ADD PRIMARY KEY (`cid`);
-
---
--- 表的索引 `Issue`
---
-ALTER TABLE `Issue`
+ALTER TABLE `issue`
   ADD PRIMARY KEY (`issue_id`);
 
 --
--- 表的索引 `Project`
+-- Indexes for table `project`
 --
-ALTER TABLE `Project`
+ALTER TABLE `project`
   ADD PRIMARY KEY (`pid`);
 
 --
--- 表的索引 `User`
+-- Indexes for table `section`
 --
-ALTER TABLE `User`
+ALTER TABLE `section`
+  ADD PRIMARY KEY (`sid`);
+
+--
+-- Indexes for table `testdata`
+--
+ALTER TABLE `testdata`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
   ADD PRIMARY KEY (`uid`);
 
 --
--- 在导出的表使用AUTO_INCREMENT
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- 使用表AUTO_INCREMENT `Admin`
+-- AUTO_INCREMENT for table `admin`
 --
-ALTER TABLE `Admin`
+ALTER TABLE `admin`
   MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- 使用表AUTO_INCREMENT `Attribute`
+-- AUTO_INCREMENT for table `attribute`
 --
-ALTER TABLE `Attribute`
-  MODIFY `aid` int(10) NOT NULL AUTO_INCREMENT COMMENT 'attribute id （主键）';
+ALTER TABLE `attribute`
+  MODIFY `aid` int(10) NOT NULL AUTO_INCREMENT COMMENT 'attribute id （主键）', AUTO_INCREMENT=4;
 
 --
--- 使用表AUTO_INCREMENT `Class`
+-- AUTO_INCREMENT for table `issue`
 --
-ALTER TABLE `Class`
-  MODIFY `cid` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `issue`
+  MODIFY `issue_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- 使用表AUTO_INCREMENT `Issue`
+-- AUTO_INCREMENT for table `project`
 --
-ALTER TABLE `Issue`
-  MODIFY `issue_id` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `project`
+  MODIFY `pid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- 使用表AUTO_INCREMENT `Project`
+-- AUTO_INCREMENT for table `section`
 --
-ALTER TABLE `Project`
-  MODIFY `pid` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `section`
+  MODIFY `sid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- 使用表AUTO_INCREMENT `User`
+-- AUTO_INCREMENT for table `testdata`
 --
-ALTER TABLE `User`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `testdata`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
