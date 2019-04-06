@@ -177,6 +177,7 @@ export default{
     }
   },
   created () {
+    console.log("this is admin tstdata created")
     this.getData()
   }
 }

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import store from '@/store'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
+import Testdata from '@/views/components/admin/Testdata'
 import comps from './components/admin'
 import util from './utils'
 Vue.use(Router)
@@ -11,12 +12,15 @@ export const publicRouter = [
     { path: '/admin/login', component: () => import('@/views/admin/Login'), hidden: true },
     { path: '/admin/home', component: () => import('@/views/admin/Home'), hidden: true, children:[
       {path:'/admin/home/dashboard',component: () =>import('@/views/components/admin/Dashboard')},
-    
+      {path:'/admin/home/testdata',component: Testdata}
     ]},
     { path: '/admin/404', component: () => import('@/views/admin/404'), hidden: true },
     { path: '/admin/submit', component: () =>import('@/views/admin/submit'),hidden: true},
+    { path: '/user/welcome', component: () =>import('@/views/user/welcome'),hidden: true},
     { path: '/user/login', component: () => import('@/views/user/Login'), hidden: true },
-    { path: '/user/home', component: () => import('@/views/user/Home'), hidden: true },
+    { path: '/user/home', component: () => import('@/views/user/Home'), hidden: true ,children:[
+      {path:'/user/home/testdata',component: Testdata},
+    ]},
     { path: '/user/404', component: () => import('@/views/user/404'), hidden: true },
     { path: '/user/submit', component: () =>import('@/views/user/submit'),hidden: true},
     { path: '*',component: () => import('@/views/user/404'),hidden: true}
