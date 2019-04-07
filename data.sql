@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2019 at 08:03 PM
+-- Generation Time: Apr 07, 2019 at 11:52 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -83,8 +83,9 @@ CREATE TABLE `issue` (
 --
 
 INSERT INTO `issue` (`issue_id`, `pid`, `title`, `content`, `submit_time`) VALUES
-(1, 1, '2018冬测试项目用户01内容', '2018冬测试项目用户01内容', '2019-04-06 15:01:24'),
-(2, 1, '2018冬测试项目用户01内容2', '2018冬测试项目用户01内容2', '2019-04-06 15:02:01');
+(1, 1, '2018冬测试项目用户01内容', '2018冬测试项目用户01内容sfasdfasdfsafdsafasdfasdfsadfsadfasdfa', '2019-04-06 15:01:24'),
+(2, 1, '2018冬测试项目用户01内容2', '2018冬测试项目用户01内容2weqgrtbernnynytmtymymymtmymytmytumytum', '2019-04-06 15:02:01'),
+(3, 1, 'Add Issue to 2018冬测试项目用户01::1', 'Add Issue to 2018冬测试项目用户01::1  XXXXXXXXXXXXXXXXXXXX', '2019-04-07 09:48:39');
 
 -- --------------------------------------------------------
 
@@ -131,9 +132,9 @@ CREATE TABLE `section` (
 --
 
 INSERT INTO `section` (`sid`, `classname`, `content`, `build_time`) VALUES
-(1, '2018秋', 'this is lorem detailLorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!', '2019-04-06 15:35:11'),
-(2, '2019春', 'asdasddasdasdaasLorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!d', '2019-04-06 15:35:13'),
-(3, '2019夏', 'safadfdfasdfasdfLorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!', '2019-04-06 15:35:33');
+(1, '2018秋', 'this is 2018 autumn random detail/////\r\n\r\nthis is lorem detailLorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!', '2019-04-06 15:35:11'),
+(2, '2019春', 'this is 2019 spring random detail/////\r\n\r\nasdasddasdasdaasLorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!d', '2019-04-06 15:35:13'),
+(3, '2019夏', 'this is 2019 summer random detail/////\r\n\r\nsafadfdfasdfasdfLorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quo laborum saepe magnam exercitationem ipsam nisi ullam tempora quae minus fugit ea perferendis fuga voluptatibus magni quam aspernatur, aut architecto!', '2019-04-06 15:35:33');
 
 -- --------------------------------------------------------
 
@@ -244,7 +245,7 @@ ALTER TABLE `attribute`
 -- AUTO_INCREMENT for table `issue`
 --
 ALTER TABLE `issue`
-  MODIFY `issue_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `issue_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `project`
