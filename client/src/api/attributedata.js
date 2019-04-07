@@ -1,5 +1,5 @@
 import http from '@/http'
-let path = 'section'
+let path = 'attribute'
 
 let index = async (data = {}) => {
   let url = path
@@ -18,6 +18,17 @@ let read = async (id) => {
   let result = await http.get(url, {})
   return result
 }
+
+let readatt = async (id) => {
+    console.log("this is readatt")
+    let url = path + '/readpro?id=' + id
+    console.log("UUURRRRRRRRRRRLLLLLLLL")
+    console.log(url)
+    let result = await http.get(url, {})
+    console.log(result)
+    console.log("ressssssssssssssssssssss")
+    return result
+  }
 
 let update = async (data) => {
   let url = path + '/update?id=' + data.id
@@ -41,6 +52,7 @@ export default{
   index,
   save,
   read,
+  readatt,
   update,
   enable,
   del

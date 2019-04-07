@@ -3,7 +3,7 @@
     <v-toolbar-side-icon @click.stop="setDrawer"></v-toolbar-side-icon>
       <v-toolbar-title>Linkstudio-template</v-toolbar-title>
       <v-spacer></v-spacer>
-      <span class="title">{{userInfo['admin_name']}}</span>
+      <span class="font-weight-medium font-italic title">{{userInfo['username']}}</span>
       <v-btn flat dark router :to="end">
         <span>Sign Out</span>
           <v-icon right>exit_to_app</v-icon>
@@ -26,7 +26,8 @@ export default {
   },
   computed: {
     userInfo () {
-      // console.log(this.$store.getters.getUserInfo)
+      console.log("now is into userinfo")
+      console.log(this.$store.getters.getUserInfo)
       return this.$store.getters.getUserInfo
     }
   },

@@ -4,9 +4,9 @@ namespace app\index\model;
 
 use think\Model;
 
-class Section extends Model
+class Project extends Model
 {
-    public function getSection($data = [])
+    public function getProject($data = [])
     {
         $res = $this->where($data)->select();
         // if ($res) {
@@ -15,7 +15,7 @@ class Section extends Model
         return $res;
     }
 
-    public function getSectionById($id = null)
+    public function getProjectById($id = null)
     {
         $res = $this->get($id);
         if ($res) {
@@ -25,8 +25,19 @@ class Section extends Model
             return false;
         }
     }
+	
+	public function getProjectstuById($id = null)
+    {
+	$res = $this->all(['uid' => $id]);
+        if ($res) {
+            return $res;
+        } else {
+            $this->error = '当前查询不存在';
+            return false;
+        }
+    }
 
-    public function saveSection($param = [])
+    public function saveProject($param = [])
     {
         // $validate = validate($this->name);
         // if (!$validate->check($param)) {
@@ -42,7 +53,7 @@ class Section extends Model
         }
     }
 
-    public function updateSection($id = null, $param = [], $flag = true)
+    public function updateProject($id = null, $param = [], $flag = true)
     {
         // if ($flag) {
             // $validate = validate($this->name);

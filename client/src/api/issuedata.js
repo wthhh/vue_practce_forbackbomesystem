@@ -1,5 +1,5 @@
 import http from '@/http'
-let path = 'section'
+let path = 'issue'
 
 let index = async (data = {}) => {
   let url = path
@@ -14,7 +14,7 @@ let save = async (data) => {
 }
 
 let read = async (id) => {
-  let url = path + '/read?' + id
+  let url = path + '/readstui?id=' + id
   let result = await http.get(url, {})
   return result
 }

@@ -4,6 +4,8 @@ import store from '@/store'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
 import Testdata from '@/views/components/admin/Testdata'
+import Display from '@/views/components/user/Display'
+import Pdisplay from '@/views/components/user/Pdisplay'
 import comps from './components/admin'
 import util from './utils'
 Vue.use(Router)
@@ -20,6 +22,8 @@ export const publicRouter = [
     { path: '/user/login', component: () => import('@/views/user/Login'), hidden: true },
     { path: '/user/home', component: () => import('@/views/user/Home'), hidden: true ,children:[
       {path:'/user/home/testdata',component: Testdata},
+      {path:'/user/home/display',component: Display},
+      {path:'/user/home/pdisplay',component: Pdisplay},
     ]},
     { path: '/user/404', component: () => import('@/views/user/404'), hidden: true },
     { path: '/user/submit', component: () =>import('@/views/user/submit'),hidden: true},
