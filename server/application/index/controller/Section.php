@@ -45,6 +45,17 @@ class Section extends Controller
         }
     }
 
+    public function readbylevel()
+    {
+        $id = $this->param['id'];
+        $ret = $this->model->getSectionByLevel($id);
+        if ($ret) {
+            return msg(200, $ret);
+        } else {
+            return msg(100, null, $this->model->getError());
+        }
+    }
+
     public function save()
     {
         $ret = $this->model->saveSection($this->param);

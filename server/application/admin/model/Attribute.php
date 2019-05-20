@@ -26,20 +26,9 @@ class Attribute extends Model
         }
     }
 	
-	public function getAttributeproById($id = null)
+	public function getAttributesecById($id = null)
     {
-	$res = $this->get(['sid' => $id]);
-        if ($res) {
-            return $res;
-        } else {
-            $this->error = '当前查询不存在';
-            return false;
-        }
-    }
-
-    public function getAttributesecById($id = null)
-    {
-    $res = $this->all(['sid' => $id]);
+	$res = $this->all(['sid' => $id]);
         if ($res) {
             return $res;
         } else {

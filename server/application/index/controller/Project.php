@@ -45,6 +45,17 @@ class Project extends Controller
         }
     }
 	
+    public function readatt()
+    {
+        $id = $this->param['id'];
+        $ret = $this->model->getProjectattById($id);
+        if ($ret) {
+            return msg(200, $ret);
+        } else {
+            return msg(100, null, $this->model->getError());
+        }
+    }
+
 	public function readstu()
     {
         $id = $this->param['id'];
@@ -55,6 +66,18 @@ class Project extends Controller
             return msg(100, null, $this->model->getError());
         }
     }
+
+    public function readsect()
+    {
+        $id = $this->param['id'];
+        $ret = $this->model->getProjectsectById($id);
+        if ($ret) {
+            return msg(200, $ret);
+        } else {
+            return msg(100, null, $this->model->getError());
+        }
+    }
+
 
     public function save()
     {

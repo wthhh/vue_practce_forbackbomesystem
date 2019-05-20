@@ -5,29 +5,38 @@
         </v-btn>
         <v-card>
             <v-card-title>
-                <h2>Add Project to {{sname}}::{{puid}}</h2>
+                <h2>Add Project to {{sname}} {{pstuid}}</h2>
             </v-card-title>
             <v-card-text>
                 <v-form class="px-3" ref="form">
                     <v-text-field label="project name" v-model="pname" prepend-icon="folder"></v-text-field>
-                    <v-textarea label="project content" v-model="pcontent" prepend-icon="edit"></v-textarea>
-                    <v-spacer></v-spacer>
+                    <!-- <v-textarea label="project content" v-model="pcontent" prepend-icon="edit"></v-textarea> -->
+                    <span class=""><v-icon >edit</v-icon>Fill in the issue details below</span>
+                    <v-layout>
+                        <div  ref="editor" style="text-align:left;width:100%;float:left"></div>
+                    </v-layout>      
+                    <v-btn flat right class="warning mt-0 mt-3" @click="getContent()">测试</v-btn>
+
                     <v-btn flat right class="primary mt-0 mt-3" @click="submit">Submit</v-btn>
 
                 </v-form>
             </v-card-text>
         </v-card>
     </v-dialog>
+    
 </template>
 
 <script>
 import projectdata from '@/api/projectdata'
-export default {
-    props:['psid','sname','puid','paid'],
+import E from 'wangeditor'
+
+export default { 
+    name: 'editor',
+    props:['psid','sname','pstuid','paid'],
     data(){
         return{
+            editorContent: '',
             pname:'',
-            pcontent:'',
             due:null,
             show:false,
             inputRules:[
@@ -42,19 +51,28 @@ export default {
         getPuid:function (){
             return this.puid
         },
+        getPstuid:function (){
+            return this.pstuid
+        },
         getPaid:function (){
             return this.paid
         },
+        getContent: function () {
+            alert(this.editorContent);
+            return this.editorContent
+        },
     },
     methods:{
+        
+        
         async submit(){
         console.log("this is child sid")
-        console.log(this.pname,this.pcontent,this.getPsid,this.getPuid,this.getPaid)
+        console.log(this.pname,this.editorContent,this.getPsid,this.getPstuid,this.getPaid)
         let forrm = {
             pname:this.pname,
-            uid:this.getPuid,
+            stu_id:this.getPstuid,
             aid:this.getPaid,
-            content:this.pcontent
+            content:this.editorContent
         }
         console.log(forrm)
         let res = null
@@ -69,6 +87,13 @@ export default {
         }
         },
     },
+    mounted() {
+        var editor = new E(this.$refs.editor)
+        editor.customConfig.onchange = (html) => {
+          this.editorContent = html
+        }
+        editor.create()
+      }
 }
 </script>
     

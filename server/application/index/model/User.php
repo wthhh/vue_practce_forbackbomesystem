@@ -19,4 +19,15 @@ class User extends Model
             return false;
         }
     }
+
+    public function getUserBystuId($id = null)
+    {
+        $res = $this->all(['stu_id' =>$id]);
+        if ($res) {
+            return $res;
+        } else {
+            $this->error = '当前查询不存在';
+            return false;
+        }
+    }
 }

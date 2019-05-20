@@ -47,6 +47,7 @@ export default {
 
         this.$refs.loading.open()
         let res = await api.base.login(this.form)
+        console.log(res.data)
         await util.sleep()
         this.$refs.loading.close()
 

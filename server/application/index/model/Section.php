@@ -25,6 +25,17 @@ class Section extends Model
             return false;
         }
     }
+   
+    public function getSectionByLevel($id = null)
+    {
+        $res = $this->all(['sid' =>$id]);
+        if ($res) {
+            return $res;
+        } else {
+            $this->error = '当前查询不存在';
+            return false;
+        }
+    }
 
     public function saveSection($param = [])
     {

@@ -9,6 +9,10 @@
         <span>Login</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
+      <v-btn flat router to="/admin/login">
+        <span>Admin</span>
+        <v-icon right>exit_to_app</v-icon>
+      </v-btn>
     </v-toolbar>
     <v-content class="ma-4">
       <v-card flat class="mx-5 mt-2 mb-5" align-center>

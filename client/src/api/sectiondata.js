@@ -19,6 +19,12 @@ let read = async (id) => {
   return result
 }
 
+let getsectionbylevel = async (id) => {
+  let url = path + '/readbylevel?id=' + id
+  let result = await http.get(url, {})
+  return result
+}
+
 let update = async (data) => {
   let url = path + '/update?id=' + data.id
   let result = await http.put(url, data)
@@ -41,6 +47,7 @@ export default{
   index,
   save,
   read,
+  getsectionbylevel,
   update,
   enable,
   del

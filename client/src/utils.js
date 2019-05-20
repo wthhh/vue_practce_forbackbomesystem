@@ -28,6 +28,22 @@ let toRouter = (name, vm, data = {}, type = 'params') => {
   }
 }
 
+let toRouter_a = (name, vm, data = {}, type = 'params') => {
+  if (!name) name = vm.$route.name
+
+  if (name === vm.$route.name) {
+    vm.$router.go(-1)
+  } else {
+    if (type === 'params') {
+      // console.log(vm.$router)
+      vm.$router.push({name: name, params: data})
+      // console.log(vm.$router)
+    } else {
+      vm.$router.push({name: name, query: data})
+    }
+  }
+}
+
 
 
 // 全局过滤中也有相同方法，看方便
@@ -64,6 +80,7 @@ let timeFilter = (value, format = 'YYYY-MM-DD HH:mm:ss') => {
 export default {
   sleep,
   toRouter,
+  toRouter_a,
   i18nName,
   cloneDeep,
   returnName,

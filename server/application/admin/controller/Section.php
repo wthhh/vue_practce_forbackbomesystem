@@ -4,12 +4,12 @@ namespace app\index\controller;
 use think\Request;
 use think\Controller;
 
-class Attribute extends Controller
+class Section extends Controller
 {
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = model('Attribute');
+        $this->model = model('Section');
 		header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Credentials: true');
         header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
@@ -26,7 +26,7 @@ class Attribute extends Controller
         if ($status) {
             $data['status'] = $status;
         }
-        $ret = $this->model->getAttribute($data);
+        $ret = $this->model->getSection($data);
         if ($ret) {
             return msg(200, $ret);
         } else {
@@ -37,29 +37,7 @@ class Attribute extends Controller
     public function read()
     {
         $id = $this->param['id'];
-        $ret = $this->model->getAttributeById($id);
-        if ($ret) {
-            return msg(200, $ret);
-        } else {
-            return msg(100, null, $this->model->getError());
-        }
-    }
-	
-	public function readpro()
-    {
-        $id = $this->param['id'];
-        $ret = $this->model->getAttributeproById($id);
-        if ($ret) {
-            return msg(200, $ret);
-        } else {
-            return msg(100, null, $this->model->getError());
-        }
-    }
-
-    public function readsec()
-    {
-        $id = $this->param['id'];
-        $ret = $this->model->getAttributesecById($id);
+        $ret = $this->model->getSectionById($id);
         if ($ret) {
             return msg(200, $ret);
         } else {
@@ -69,7 +47,7 @@ class Attribute extends Controller
 
     public function save()
     {
-        $ret = $this->model->saveAttribute($this->param);
+        $ret = $this->model->saveSection($this->param);
         if ($ret) {
             return msg(200, $this->model->getLastInsID(), '添加成功');
         } else {
@@ -85,7 +63,7 @@ class Attribute extends Controller
         } else {
             return msg(100, null, '参数错误');
         }
-        $ret = $this->model->updateAttribute($id, $this->param);
+        $ret = $this->model->updateSection($id, $this->param);
         if ($ret) {
             return msg(200, null, '更新成功');
         } else {
@@ -116,7 +94,7 @@ class Attribute extends Controller
         } else {
             return msg(100, null, '参数错误');
         }
-        $ret = $this->model->updateAttribute($id, $this->param, false);
+        $ret = $this->model->updateSection($id, $this->param, false);
         if ($ret) {
             return msg(200, null, '操作成功');
         } else {

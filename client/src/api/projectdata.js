@@ -18,10 +18,18 @@ let read = async (id) => {
   let result = await http.get(url, {})
   return result
 }
+let readatt = async (id) => {
+  let url = path + '/readatt?id=' + id
+  let result = await http.get(url, {})
+  // console.log("a"+result)
+  return result
+}
 
 let readstu = async (id) => {
     let url = path + '/readstu?id=' + id
     let result = await http.get(url, {})
+    // console.log("u"+result)
+
     return result
   }
 
@@ -47,6 +55,7 @@ export default{
   index,
   save,
   read,
+  readatt,
   readstu,
   update,
   enable,

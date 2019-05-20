@@ -19,6 +19,13 @@ let read = async (id) => {
   return result
 }
 
+let readproject = async (id) => {
+  let url = path + '/readproject?id=' + id
+  let result = await http.get(url, {})
+  return result
+}
+
+
 let update = async (data) => {
   let url = path + '/update?id=' + data.id
   let result = await http.put(url, data)
@@ -41,6 +48,7 @@ export default{
   index,
   save,
   read,
+  readproject,
   update,
   enable,
   del

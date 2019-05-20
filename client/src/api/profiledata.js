@@ -1,5 +1,5 @@
 import http from '@/http'
-let path = 'attribute'
+let path = 'profile'
 
 let index = async (data = {}) => {
   let url = path
@@ -18,27 +18,22 @@ let read = async (id) => {
   let result = await http.get(url, {})
   return result
 }
-
-let readsec = async (id) => {
-    let url = path + '/readsec?id=' + id
-    let result = await http.get(url, {})
-    return result
+let readatt = async (id) => {
+  let url = path + '/readatt?id=' + id
+  let result = await http.get(url, {})
+  return result
 }
 
-let readatt = async (id) => {
-    console.log("this is readatt")
-    let url = path + '/readpro?id=' + id
-    console.log("UUURRRRRRRRRRRLLLLLLLL")
-    console.log(url)
+let readstu = async (id) => {
+    let url = path + '/readstu?id=' + id
     let result = await http.get(url, {})
-    console.log(result)
-    console.log("ressssssssssssssssssssss")
     return result
   }
 
 let update = async (data) => {
-  let url = path + '/update?id=' + data.id
-  let result = await http.put(url, data)
+  console.log("when is update")
+  let url = path + '/update'
+  let result = await http.post(url, data)
   return result
 }
 
@@ -58,8 +53,8 @@ export default{
   index,
   save,
   read,
-  readsec,
   readatt,
+  readstu,
   update,
   enable,
   del

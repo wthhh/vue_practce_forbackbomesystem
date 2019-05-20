@@ -4,9 +4,9 @@ namespace app\index\model;
 
 use think\Model;
 
-class Attribute extends Model
+class Project extends Model
 {
-    public function getAttribute($data = [])
+    public function getProject($data = [])
     {
         $res = $this->where($data)->select();
         // if ($res) {
@@ -15,7 +15,7 @@ class Attribute extends Model
         return $res;
     }
 
-    public function getAttributeById($id = null)
+    public function getProjectById($id = null)
     {
         $res = $this->get($id);
         if ($res) {
@@ -26,9 +26,9 @@ class Attribute extends Model
         }
     }
 	
-	public function getAttributeproById($id = null)
+	public function getProjectsectById($id = null)
     {
-	$res = $this->get(['sid' => $id]);
+	$res = $this->all(['aid' => $id]);
         if ($res) {
             return $res;
         } else {
@@ -37,18 +37,7 @@ class Attribute extends Model
         }
     }
 
-    public function getAttributesecById($id = null)
-    {
-    $res = $this->all(['sid' => $id]);
-        if ($res) {
-            return $res;
-        } else {
-            $this->error = '当前查询不存在';
-            return false;
-        }
-    }
-
-    public function saveAttribute($param = [])
+    public function saveProject($param = [])
     {
         // $validate = validate($this->name);
         // if (!$validate->check($param)) {
@@ -64,7 +53,7 @@ class Attribute extends Model
         }
     }
 
-    public function updateAttribute($id = null, $param = [], $flag = true)
+    public function updateProject($id = null, $param = [], $flag = true)
     {
         // if ($flag) {
             // $validate = validate($this->name);

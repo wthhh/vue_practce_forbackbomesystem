@@ -56,8 +56,9 @@ export default {
           //sessionStorage.setItem('menus', JSON.stringify(res.data.menus))
           sessionStorage.setItem('admin', JSON.stringify(res.data))
           //sessionStorage.setItem('token', res.data.token)
-          // console.log(sessionStorage)
-          util.toRouter('/admin/home', this)
+           console.log(res.data)
+          //util.toRouter('/admin/home', this,res.data)
+          this.$router.push({name:'admin_home',params:res.data})
         } else {
           // console.log(res.data)
           this.$refs.message.open(res.error, 'error')

@@ -4,9 +4,9 @@ namespace app\index\model;
 
 use think\Model;
 
-class Attribute extends Model
+class Section extends Model
 {
-    public function getAttribute($data = [])
+    public function getSection($data = [])
     {
         $res = $this->where($data)->select();
         // if ($res) {
@@ -15,7 +15,7 @@ class Attribute extends Model
         return $res;
     }
 
-    public function getAttributeById($id = null)
+    public function getSectionById($id = null)
     {
         $res = $this->get($id);
         if ($res) {
@@ -25,30 +25,8 @@ class Attribute extends Model
             return false;
         }
     }
-	
-	public function getAttributeproById($id = null)
-    {
-	$res = $this->get(['sid' => $id]);
-        if ($res) {
-            return $res;
-        } else {
-            $this->error = '当前查询不存在';
-            return false;
-        }
-    }
 
-    public function getAttributesecById($id = null)
-    {
-    $res = $this->all(['sid' => $id]);
-        if ($res) {
-            return $res;
-        } else {
-            $this->error = '当前查询不存在';
-            return false;
-        }
-    }
-
-    public function saveAttribute($param = [])
+    public function saveSection($param = [])
     {
         // $validate = validate($this->name);
         // if (!$validate->check($param)) {
@@ -64,7 +42,7 @@ class Attribute extends Model
         }
     }
 
-    public function updateAttribute($id = null, $param = [], $flag = true)
+    public function updateSection($id = null, $param = [], $flag = true)
     {
         // if ($flag) {
             // $validate = validate($this->name);

@@ -45,18 +45,7 @@ class Attribute extends Controller
         }
     }
 	
-	public function readpro()
-    {
-        $id = $this->param['id'];
-        $ret = $this->model->getAttributeproById($id);
-        if ($ret) {
-            return msg(200, $ret);
-        } else {
-            return msg(100, null, $this->model->getError());
-        }
-    }
-
-    public function readsec()
+	public function readsec()
     {
         $id = $this->param['id'];
         $ret = $this->model->getAttributesecById($id);

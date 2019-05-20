@@ -56,6 +56,17 @@ class Issue extends Controller
         }
     }
 
+    public function readproject()
+    {
+        $id = $this->param['id'];
+        $ret = $this->model->getIssueByProjectId($id);
+        if ($ret) {
+            return msg(200, $ret);
+        } else {
+            return msg(100, null, $this->model->getError());
+        }
+    }
+
     public function save()
     {
         $ret = $this->model->saveIssue($this->param);

@@ -7,7 +7,8 @@
           <Ipopup :ipid="recval.pj.pid" :pname="recval.pj.pname"/>
       </v-card-title>
       <v-card-content class="ma-3 px-4">
-          <p>{{recval.pj.content}}</p>
+          <!-- <p>{{recval.pj.content}}</p> -->
+          <p v-html="recval.pj.content"></p>
       </v-card-content>
     </v-card>
     <v-expansion-panel>

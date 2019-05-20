@@ -25,6 +25,17 @@ class Issue extends Model
             return false;
         }
     }
+
+    public function getIssueByProjectId($id = null)
+    {
+        $res = $this->all(['pid' => $id]);
+        if ($res) {
+            return $res;
+        } else {
+            $this->error = '当前查询不存在';
+            return false;
+        }
+    }
 	
 	public function getIssuestuiById($id = null)
     {

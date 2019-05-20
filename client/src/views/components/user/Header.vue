@@ -4,9 +4,9 @@
       <v-toolbar-title>Linkstudio-template</v-toolbar-title>
       <v-spacer></v-spacer>
       <span class="font-weight-medium font-italic title">{{userInfo['username']}}</span>
-      <v-btn flat dark router :to="end">
+      <v-btn  @click="signOut" flat dark >
         <span>Sign Out</span>
-          <v-icon right>exit_to_app</v-icon>
+          <v-icon  right>exit_to_app</v-icon>
       </v-btn>
     //- MyMessage(ref="message")
   </v-toolbar>
@@ -18,7 +18,7 @@ export default {
   name: 'top',
   data () {
     return {
-      end:'/user/login',
+      end:'/user/welcome',
       self: this,
       items: null,
       
@@ -36,7 +36,13 @@ export default {
     setDrawer () {
       this.$emit('setDrawer', !this.drawer)
     },
+    async signOut (){
+      sessionStorage.removeItem('user')
+      util.toRouter(this.end, this)
 
+      console.log("now is signOut")
+
+    }
   }
 }
 </script>

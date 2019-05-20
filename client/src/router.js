@@ -6,15 +6,22 @@ import 'nprogress/nprogress.css'// progress bar style
 import Testdata from '@/views/components/admin/Testdata'
 import Display from '@/views/components/user/Display'
 import Pdisplay from '@/views/components/user/Pdisplay'
+import Profile from '@/views/components/user/Profile'
+import Adisplay from '@/views/components/admin/Adisplay'
 import comps from './components/admin'
 import util from './utils'
 Vue.use(Router)
 
 export const publicRouter = [
     { path: '/admin/login', component: () => import('@/views/admin/Login'), hidden: true },
-    { path: '/admin/home', component: () => import('@/views/admin/Home'), hidden: true, children:[
+    { name:"admin_home",path: '/admin/home', component: () => import('@/views/admin/Home'), hidden: true, children:[
       {path:'/admin/home/dashboard',component: () =>import('@/views/components/admin/Dashboard')},
-      {path:'/admin/home/testdata',component: Testdata}
+      {path:'/admin/home/testdata',component: Testdata},
+      {path:'/admin/home/adisplay',component: Adisplay, hidden:true, children:[
+         {path:'/admin/home/pdisplay',component: () =>import('@/views/components/admin/Pdisplay'),hidden:true,children:[
+            {name:"Idisplay",path:'/admin/home/idisplay',component: () =>import('@/views/components/admin/Idisplay')},
+         ]},
+      ]},
     ]},
     { path: '/admin/404', component: () => import('@/views/admin/404'), hidden: true },
     { path: '/admin/submit', component: () =>import('@/views/admin/submit'),hidden: true},
@@ -24,6 +31,7 @@ export const publicRouter = [
       {path:'/user/home/testdata',component: Testdata},
       {path:'/user/home/display',component: Display},
       {path:'/user/home/pdisplay',component: Pdisplay},
+      {path:'/user/home/profile',component: Profile},
     ]},
     { path: '/user/404', component: () => import('@/views/user/404'), hidden: true },
     { path: '/user/submit', component: () =>import('@/views/user/submit'),hidden: true},
@@ -94,12 +102,12 @@ router.beforeEach((to,from, next) =>{
     }
     else{
     // 如果不是login 则跳转login
-      if (to.path !== '/user/login') { 
-        if (to.path =='/admin/login'){
+      if (to.path !== '/user/welcome') { 
+        if (to.path =='/user/login'){
           next()
         }
         else{
-          next({path: '/user/login'})
+          next({path: '/user/welcome'})
         }
       } 
       else {

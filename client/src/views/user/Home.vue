@@ -10,27 +10,33 @@
           </v-avatar>
       </div>
 
-      <!-- <div class="pa-4 text-xs-center primary">
-        <div class="py-4" style="color:#1565C0"> -->
-        
-          <!-- <v-btn dark href="https://github.com/LinYangLee" class="primary">
-            <v-icon left dark>star</v-icon>
-            <span>Github</span>
-          </v-btn> -->
-        <!-- </div>
-      </div> -->
+      <v-expansion-panel>
+          <v-expansion-panel-content class="primary white--text" text-align-left>
+            <template v-slot:header>
+              //- <v-icon class="white--text" lg left>dashboard</v-icon>
+              <span class="font-weight-bold headline">Profile</span>
+            </template>
+            <v-list class="py-0">
+              <v-list-tile class="primary" router to="/user/home/profile">
+                <v-list-tile-content>
+                      <v-list-tile-title class="white--text mx-3">User Profile</v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+            </v-list>
+          </v-expansion-panel-content>
+      </v-expansion-panel>
 
       <v-expansion-panel>
         <v-expansion-panel-content class="primary white--text" text-align-left>
           <template v-slot:header>
-            <!-- <v-icon class="white--text" lg left>dashboard</v-icon> -->
+            //- <v-icon class="white--text" lg left>dashboard</v-icon>
             <span class="font-weight-bold headline">Section</span>
           </template>
           <v-list class="py-0">
             <v-list-tile v-for="item in data" :key="item.sid" class="primary" router to="/user/home/display" @click="send(item)">
-              <!-- <v-list-tile-action>
-                <v-icon class="white--text">dashboard</v-icon>
-              </v-list-tile-action> -->
+              //- <v-list-tile-action>
+              //-   <v-icon class="white--text">dashboard</v-icon>
+              //- </v-list-tile-action>
               <v-list-tile-content>
                     <v-list-tile-title class="white--text mx-3">{{item.classname}}</v-list-tile-title>
               </v-list-tile-content>
@@ -42,14 +48,14 @@
     <v-expansion-panel class="py-0">
       <v-expansion-panel-content class="primary white--text" text-align-left>
         <template v-slot:header>
-          <!-- <v-icon class="white--text" lg left>dashboard</v-icon> -->
+          //- <v-icon class="white--text" lg left>dashboard</v-icon>
           <span class="font-weight-bold headline">My Project</span>
         </template>
         <v-list class="py-0">
           <v-list-tile v-for="item in pdata" :key="item.pid" class="primary" router to="/user/home/pdisplay" @click="isend(item)">
-              <!-- <v-list-tile-action>
-                <v-icon class="white--text">dashboard</v-icon>
-              </v-list-tile-action> -->
+              //-  <v-list-tile-action>
+              //-   <v-icon class="white--text">dashboard</v-icon>
+              //- </v-list-tile-action> 
           <v-list-tile-content>
                 <v-list-tile-title class="white--text mx-3">{{item.pname}}</v-list-tile-title>
           </v-list-tile-content>
@@ -58,16 +64,16 @@
       </v-expansion-panel-content>
     </v-expansion-panel>
 
-      <!-- <v-list class="py-0">
-        <v-list-tile v-for="link in links" :key="link.text" router :to="link.route" class="primary">
-          <v-list-tile-action>
-            <v-icon class="white--text">{{link.icon}}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title class="white--text mx-2">{{link.text}}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list> -->
+      //-  <v-list class="py-0">
+      //-   <v-list-tile v-for="link in links" :key="link.text" router :to="link.route" class="primary">
+      //-     <v-list-tile-action>
+      //-       <v-icon class="white--text">{{link.icon}}</v-icon>
+      //-     </v-list-tile-action>
+      //-     <v-list-tile-content>
+      //-       <v-list-tile-title class="white--text mx-2">{{link.text}}</v-list-tile-title>
+      //-     </v-list-tile-content>
+      //-   </v-list-tile>
+      //- </v-list> 
     </v-navigation-drawer>
     <Header :clipped="clipped" :miniVariant="miniVariant" :drawer="drawer" @setDrawer="getDrawer" @setClipped="getClipped" @setFixed="getFixed" @setMiniVariant="getMiniVariant" />
       //- <transition name="fade-transform" mode="out-in" />
@@ -106,6 +112,7 @@ export default {
       links:[
             {icon:'dashboard',text:'Section Enroll',route:'/home/dashboard'},
             {icon:'folder',text:'Adding Log',route:'/home/testdata'},
+            {icon:'folder',text:'Adding Log',route:'/home/testdata'},
         ],
       data:[],
       pdata:[],
@@ -114,8 +121,8 @@ export default {
   },
   computed: {
     userInfo () {
-      console.log("now is into homeeeeeeeeeeeee  userinfo")
-      console.log(this.$store.getters.getUserInfo)
+      //console.log("now is into homeeeeeeeeeeeee  userinfo")
+      //console.log(this.$store.getters.getUserInfo)
       return this.$store.getters.getUserInfo
     }
   },
@@ -134,15 +141,15 @@ export default {
       this.drawer = v
     },
     async getData () {
-      console.log("now is getdata")
+      //console.log("now is getdata")
       let res = await sectiondata.index()
       //console.log("asdasdas")
       //util.response(res, this)
       if (res.code === 200) {
         this.data = res.data
       }
-      console.log("now i wanttt project")
-      let pres = await projectdata.readstu(this.userInfo['uid'])
+      console.log("now i wanttt project"+this.userInfo['stu_id'])
+      let pres = await projectdata.readstu(this.userInfo['stu_id'])
       if (pres.code === 200){
         this.pdata = pres.data
       }
@@ -157,38 +164,38 @@ export default {
         return ires
     },
     send (v){
-        console.log("this is home sned")
+        //console.log("this is home sned")
         bus.$emit('val',v)
-        console.log("this is home send the data val")
+        //console.log("this is home send the data val")
     },
     async gette(v){
         this.idata = await this.getIssue(v)
     },
     isend (v){
-        console.log("this is home iiiiiiisned")
-        console.log(v)
+        //console.log("this is home iiiiiiisned")
+        //console.log(v)
         //this.gette(v.pid)
         let re=null
         let iidaa = this.getIssue(v.pid)
         iidaa .then(function(result){
-          console.log("TTTTTTTTTTTTTTTTTTTTTHHHHHHHHHHHHH")
-          console.log(result)
+          //console.log("TTTTTTTTTTTTTTTTTTTTTHHHHHHHHHHHHH")
+          //console.log(result)
           let iform={
             pj:v,
             isu:result
           }
-          console.log(iform)
+          //console.log(iform)
           bus.$emit('val',iform)
-          console.log("eeeeeeeeeeeeeeeeeennnnnnnnnnnnnnnn")
+          //console.log("eeeeeeeeeeeeeeeeeennnnnnnnnnnnnnnn")
         })
-        console.log("iiiiiiiirrrrrrrrrrrreeeeeeeeeeeeesssssssssss")
-        console.log(re)
+        //console.log("iiiiiiiirrrrrrrrrrrreeeeeeeeeeeeesssssssssss")
+        //console.log(re)
 
-        console.log("this is home send the data val")
+        //console.log("this is home send the data val")
     }
   },
   created() {
-      console.log("now into home created")
+      //console.log("now into home created")
       this.getData()
   },
 
