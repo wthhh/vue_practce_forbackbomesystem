@@ -16,6 +16,11 @@ export const publicRouter = [
     { path: '/admin/login', component: () => import('@/views/admin/Login'), hidden: true },
     { name:"admin_home",path: '/admin/home', component: () => import('@/views/admin/Home'), hidden: true, children:[
       {path:'/admin/home/dashboard',component: () =>import('@/views/components/admin/Dashboard')},
+      {name:"admin_search",path:'/admin/home/search',component: () =>import('@/views/components/admin/Search'),hidden: true, children:[
+          {name:"search_res",path:'/admin/home/search_res',component: () =>import('@/views/components/admin/Search_res'),hidden:true,children:[
+              {name:"search_res_child",path:'/admin/home/search_res_child',component: () =>import('@/views/components/admin/Search_res_child')}
+          ]},
+      ]},
       {path:'/admin/home/testdata',component: Testdata},
       {path:'/admin/home/adisplay',component: Adisplay, hidden:true, children:[
          {path:'/admin/home/pdisplay',component: () =>import('@/views/components/admin/Pdisplay'),hidden:true,children:[

@@ -14,7 +14,7 @@ let save = async (data) => {
 }
 
 let read = async (id) => {
-  let url = path + '/read?' + id
+  let url = path + '/read?id=' + id
   let result = await http.get(url, {})
   return result
 }
