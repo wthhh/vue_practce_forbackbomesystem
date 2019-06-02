@@ -91,7 +91,7 @@ export default{
     async getData () {
       console.log("now is getdata")
       let res = await sectiondata.index()
-      //console.log("asdasdas")
+      console.log("asdasdas")
       //util.response(res, this)
       if (res.code === 200) {
         this.data = res.data

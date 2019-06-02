@@ -21,7 +21,7 @@ class Base extends Controller
 
     public function index()
     {
-        return 'succeed';
+        return view('index');
     }
     # 这个index 控制器的调用是 server/public/index.php/Index/index
     # 这些都是在 router.php 里面定义的 

@@ -31,11 +31,13 @@ import issuedata from '@/api/issuedata'
 import E from 'wangeditor'
 
 export default { 
+        name: 'editor',
+
     props:['ipid','pname'],
     data(){
         return{
             ititle:'',
-            icontent:'',
+            editorContent:'',
             due:null,
             show:false,
             inputRules:[
@@ -54,25 +56,29 @@ export default {
     },
         methods:{
             async submit(){
-            console.log("this is IIIIIIIIIIIIIIPPPPPPPPPPPP child sid")
-            console.log(this.getIpid,this.ititle,this.icontent)
-            let forrm = {
-                pid:this.getIpid,
-                title:this.ititle,
-                content:this.editcontent
+            if (confirm("确认提交申请？")){
+                console.log("this is IIIIIIIIIIIIIIPPPPPPPPPPPP child sid")
+                console.log(this.getIpid,this.ititle,this.editorContent)
+                let forrm = {
+                    pid:this.getIpid,
+                    title:this.ititle,
+                    content:this.editorContent
+                }
+                console.log(forrm)
+                let res = null
+                //console.log("now is coming to here")
+                res = await issuedata.save(forrm)
+                //util.response(res, this)
+                //console.log(res)
+                if (res.code === 200) {
+                console.log("add sucesss")
+                } else {
+                console.log("add faillll")
+                }
+            location. reload()
+            this.$router.go(0)  
             }
-            console.log(forrm)
-            let res = null
-              //console.log("now is coming to here")
-            res = await issuedata.save(forrm)
-            //util.response(res, this)
-            //console.log(res)
-            if (res.code === 200) {
-              console.log("add sucesss")
-            } else {
-              console.log("add faillll")
-            }
-            },
+        },
         },
     mounted() {
         var editor = new E(this.$refs.editor)

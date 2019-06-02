@@ -1,41 +1,48 @@
 <template>
     <v-card>
         <v-card-text>
-            <v-form class="px-3" ref="form">
-                <span class=""><v-icon >account_box</v-icon>上传照片</span>
-                <div id="fileArea">
-                    <input type="file" name="pic" accept="image/*"  @change="fileSelect"/>
+            
+            <v-layout align-space-around justify-start column fill-height>
+                <div class="userInfoFrame item elevation-5">
+                    <div class="left-part">
+                        <v-layout row >
+                            <v-flex xs5 mt4>
+                                <v-img
+                                src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
+                                height="75px"
+                                contain
+                                ></v-img>
+                            </v-flex>
+                            <v-flex xs7>
+                                <div>
+                                <div class="headline">{{userInfo['username']}}</div>
+                                <div>{{userInfo['nativeplace']}}</div>
+                                <div>{{userInfo['nation']}}</div>
+                                </div>
+                            </v-flex>
+                            
+                        </v-layout>
+
+                        <v-btn flat right class="warning mt-5 ml-5" @click="toEditProfile">
+                            编辑个人信息
+                        </v-btn>
+                    </div>
+                    <div class="right-part">
+                        
+                    </div>
                 </div>
-                
-                <v-text-field label="user name" v-model="username" prepend-icon="person"></v-text-field>
-                <v-select v-model="genderselect" :items="genderitems" label="gender" prepend-icon="wc"></v-select>
-                <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :nudge-right="40" lazy transition="scale-transition" offset-y full-width min-width="290px">
-                  <template v-slot:activator="{ on }">
-                    <v-text-field v-model="date" label="Birthday date" prepend-icon="event" readonly v-on="on"></v-text-field>
-                  </template>
-                  <v-date-picker ref="picker" v-model="date" :max="new Date().toISOString().substr(0, 10)" min="1950-01-01" @change="savedate"></v-date-picker>
-                </v-menu>
-                <v-select v-model="nationselect" :items="nationitems" label="nation" prepend-icon="home"></v-select>
-                <v-text-field label="native place" v-model="nativeplace" prepend-icon="place"></v-text-field>
-                <v-select v-model="politicalselect" :items="politicalitems" label="political outlook" prepend-icon="group"></v-select>
-                <v-text-field label="college" v-model="college" prepend-icon="school"></v-text-field>
-                <v-text-field label="grade" v-model="grade" prepend-icon="school"></v-text-field>
-                <v-text-field label="majorset" v-model="majorset" prepend-icon="school"></v-text-field>
-                <v-text-field label="eduset" v-model="eduset" prepend-icon="school"></v-text-field>
-                <v-text-field label="phone" v-model="phone" prepend-icon="school"></v-text-field>
-                <v-text-field label="email" v-model="email" prepend-icon="school"></v-text-field>
-                <v-textarea label="edu background" v-model="eduback" prepend-icon="edit"></v-textarea>
-                <v-textarea label="gra exp" v-model="ug_exp" prepend-icon="edit"></v-textarea>
-                <v-textarea label="other exp" v-model="other_exp" prepend-icon="edit"></v-textarea>
-                <v-spacer></v-spacer>
-                <v-btn flat right class="primary mt-0 mt-3" @click="submit">Submit</v-btn>
-            </v-form>
+                <!-- <div class="userInfoFrame item elevation-5">
+                    
+                </div> -->
+            </v-layout>
         </v-card-text>
     </v-card>
 </template>
 
 <script>
 import profiledata from '@/api/profiledata'
+import util from '@/utils'
+
 export default {
     props:['psid','sname','puid','paid'],
     data(){
@@ -90,6 +97,9 @@ export default {
         },
     },
     methods:{
+        async toEditProfile(){
+            util.toRouter('/user/home/editprofile',this)
+        },
         fileSelect(event){
             // console.log(event)
             this.selectedfile=event.target.files[0]
@@ -99,8 +109,9 @@ export default {
         console.log("this is child sid")
         console.log(this.userInfo)
         let forrm = {
-            image:this.selectedfile,
-            uid:this.userInfo.uid,
+            uid:this.userInfo.uid,       
+                 image:this.selectedfile,
+
             stu_id:this.userInfo.stu_id,
             username:this.username,
             gender:this.genderselect,
@@ -144,6 +155,27 @@ export default {
         margin: 15px 0 5px 32px;
         /* border-style:dotted;
         border-color: black */
+    }
+    .userInfoFrame{
+    /* position: relative; */
+    /* top: 55px;
+    width: 80%;
+    height: 252px; */
+    background: #FFFFFF;
+    box-shadow: 0 0 20px 0 rgba(59,104,184,0.25);
+    border-radius: 10px;
+    margin: 20px 40px 20px 40px;
+    padding: 20px;
+    }
+    .left-part {
+    display: inline-block;
+    vertical-align: top;
+    width: 323px;
+    }
+    .right-part {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 27.6px;
     }
 </style>
 

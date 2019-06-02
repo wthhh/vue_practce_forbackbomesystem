@@ -4,7 +4,7 @@ namespace app\index\controller;
 use think\Request;
 use think\Controller;
 
-class User extends Controller
+class Profile extends Controller
 {
     public function _initialize()
     {
@@ -16,10 +16,9 @@ class User extends Controller
         header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, sessionId, X-Requested-Token");
         $this->request = Request::instance();
         $this->param = $this->request->param();
+        
     }
 
-
-    
     public function index()
     {
 
@@ -81,7 +80,7 @@ class User extends Controller
 
     public function update()
     {
-        // return msg(22222222, null, $this);
+        return msg(11100, null, $this);
 
         if ($this->param['uid']) {
             $id = $this->param['uid'];
@@ -90,7 +89,7 @@ class User extends Controller
         } else {
             return msg(100, null, '参数错误');
         }
-        // return msg(11100, null, $this);
+        return msg(11100, null, $this);
         $ret = $this->model->updateProfile($id, $this->param); 
         if ($ret) {
             return msg(200, null, '更新成功');
@@ -158,21 +157,4 @@ class User extends Controller
             return msg(100, null, $this->model->getError());
         }
     }
- 
-
-	public function readbystuid()
-    {
-        $id = $this->param['id'];
-        $ret = $this->model->getUserBystuId($id);
-        if ($ret) {
-            return msg(200, $ret);
-        } else {
-            return msg(100, null, $this->model->getError());
-        }
-    }
-
-   
-  
-
-   
 }

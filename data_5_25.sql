@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1
--- 生成日期： 2019-05-21 14:32:44
+-- 生成日期： 2019-05-25 12:05:57
 -- 服务器版本： 10.1.36-MariaDB
 -- PHP 版本： 7.2.11
 
@@ -122,7 +122,11 @@ INSERT INTO `project` (`pid`, `pname`, `stu_id`, `aid`, `content`, `submit_time`
 (17, '测试水水水水', '01', 3, '<p>测试</p>', '2019-05-19 17:14:46'),
 (18, 'test', '01', 2, '<p>ddd</p><p>ddd</p>', '2019-05-20 03:56:22'),
 (19, 'admin22222', '01', 3, '<p>w222</p>', '2019-05-20 04:00:24'),
-(20, 'test2019', '01', 1, '<p>测试&nbsp;</p>', '2019-05-20 04:20:09');
+(20, 'test2019', '01', 1, '<p>测试&nbsp;</p>', '2019-05-20 04:20:09'),
+(21, '哇哇哇哇', '01', 1, '<p>提供的</p>', '2019-05-23 13:22:21'),
+(22, '嗯嗯', '01', 1, '<p>222 的</p>', '2019-05-23 13:39:20'),
+(34, '', '02', 2, '<p>lrkgjslk rjewlk</p>', '2019-05-25 02:32:55'),
+(35, '', '02', 2, '<p>fees方式德国人而是</p>', '2019-05-25 02:34:53');
 
 -- --------------------------------------------------------
 
@@ -178,16 +182,31 @@ INSERT INTO `testdata` (`id`, `name`, `status`) VALUES
 CREATE TABLE `user` (
   `uid` int(10) NOT NULL,
   `username` varchar(50) NOT NULL COMMENT '用户名',
-  `stu_id` varchar(50) NOT NULL COMMENT '学号'
+  `stu_id` varchar(50) NOT NULL COMMENT '学号',
+  `name` varchar(50) NOT NULL,
+  `gender` varchar(11) NOT NULL,
+  `birth` date NOT NULL,
+  `nation` varchar(50) NOT NULL,
+  `birthplace` varchar(100) NOT NULL,
+  `political` varchar(20) NOT NULL,
+  `college` varchar(20) NOT NULL,
+  `grade` varchar(20) NOT NULL,
+  `majorset` varchar(30) NOT NULL,
+  `eduset` varchar(20) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `eduback` text NOT NULL,
+  `ug_exp` text NOT NULL,
+  `other_exp` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `user`
 --
 
-INSERT INTO `user` (`uid`, `username`, `stu_id`) VALUES
-(1, '样例用户名', '01'),
-(2, 'testuser', '02');
+INSERT INTO `user` (`uid`, `username`, `stu_id`, `name`, `gender`, `birth`, `nation`, `birthplace`, `political`, `college`, `grade`, `majorset`, `eduset`, `phone`, `email`, `eduback`, `ug_exp`, `other_exp`) VALUES
+(1, 'uiuiu', '01', '', 'Female', '0000-00-00', '', '', '', '带带带', '大二', '电子竞技', '无', '999', '333@1', '', '', ''),
+(2, 'testuser', '02', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '');
 
 --
 -- 转储表的索引
@@ -261,7 +280,7 @@ ALTER TABLE `issue`
 -- 使用表AUTO_INCREMENT `project`
 --
 ALTER TABLE `project`
-  MODIFY `pid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `pid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- 使用表AUTO_INCREMENT `section`

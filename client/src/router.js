@@ -7,6 +7,7 @@ import Testdata from '@/views/components/admin/Testdata'
 import Display from '@/views/components/user/Display'
 import Pdisplay from '@/views/components/user/Pdisplay'
 import Profile from '@/views/components/user/Profile'
+import EditProfile from '@/views/components/user/EditProfile'
 import Adisplay from '@/views/components/admin/Adisplay'
 import comps from './components/admin'
 import util from './utils'
@@ -37,6 +38,7 @@ export const publicRouter = [
       {path:'/user/home/display',component: Display},
       {path:'/user/home/pdisplay',component: Pdisplay},
       {path:'/user/home/profile',component: Profile},
+      {path:'/user/home/editprofile',component: EditProfile},
     ]},
     { path: '/user/404', component: () => import('@/views/user/404'), hidden: true },
     { path: '/user/submit', component: () =>import('@/views/user/submit'),hidden: true},

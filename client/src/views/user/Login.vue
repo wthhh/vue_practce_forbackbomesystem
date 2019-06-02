@@ -29,7 +29,7 @@ export default {
       self: this,
       gradient: 'to top right, #1A237E, #BBDEFB',
       form: {
-        stu_id: '1',
+        stu_id: '01',
       },
       valid: false,
       fixed: false

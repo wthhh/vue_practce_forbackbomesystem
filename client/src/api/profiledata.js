@@ -1,5 +1,5 @@
 import http from '@/http'
-let path = 'profile'
+let path = 'user'
 
 let index = async (data = {}) => {
   let url = path

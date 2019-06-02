@@ -66,26 +66,31 @@ export default {
         
         
         async submit(){
-        console.log("this is child sid")
-        console.log(this.pname,this.editorContent,this.getPsid,this.getPstuid,this.getPaid)
-        let forrm = {
-            pname:this.pname,
-            stu_id:this.getPstuid,
-            aid:this.getPaid,
-            content:this.editorContent
+        if (confirm("确认提交申请？")){
+            console.log("this is child sid")
+            console.log(this.pname,this.editorContent,this.getPsid,this.getPstuid,this.getPaid)
+            let forrm = {
+                pname:this.pname,
+                stu_id:this.getPstuid,
+                aid:this.getPaid,
+                content:this.editorContent
+            }
+            console.log(forrm)
+            let res = null
+            //console.log("now is coming to here")
+            res = await projectdata.save(forrm)
+            //util.response(res, this)
+            //console.log(res)
+            if (res.code === 200) {
+            console.log("add sucesss")
+            } else {
+            console.log("add faillll")
+            }
+            location. reload()
+            this.$router.go(0)      
         }
-        console.log(forrm)
-        let res = null
-          //console.log("now is coming to here")
-        res = await projectdata.save(forrm)
-        //util.response(res, this)
-        //console.log(res)
-        if (res.code === 200) {
-          console.log("add sucesss")
-        } else {
-          console.log("add faillll")
         }
-        },
+        ,
     },
     mounted() {
         var editor = new E(this.$refs.editor)
