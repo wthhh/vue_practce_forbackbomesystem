@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from '@/store'
+import htmlToPdf from '@/components/htmlToPdf'
+Vue.use(htmlToPdf)
 
 
 // import './filters'
