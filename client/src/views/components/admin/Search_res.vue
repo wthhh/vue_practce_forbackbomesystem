@@ -5,19 +5,65 @@
           <span class="font-weight-bold display-1">User Information</span>
          
       </v-card-title>
-      <v-card-content class="ma-3 px-4" v-for="item1 in usr" :key="item1.uid">
-      <v-list>
-            <v-list-tile>
-            <v-list-tile-title>{{item1.stu_id}}</v-list-tile-title>
-              <v-list-tile-content>
-              {{item1.username}}  
-              </v-list-tile-content>
-             
-            </v-list-tile>
-          </v-list>
+      
+      <v-card-content id="pdfDom" class="ma-3 px-4" v-for="item1 in usr" :key="item1.uid">
+      
+
+  <h1 style="text-align:center;">复旦大学研究生骨干信息表</h1>
+  <table align="center" border="1" cellspacing="0" width="75%" style="margin-left:auto;margin-right:auto;">
+    <tr align="center">
+      <td width="30px" height="80px" align="center">姓名</td>
+      <td width="70px" colspan="3">{{item1.username}}</td>
+      <td colspan="2" width="30px">性别</td>
+      <td colspan="2" width="50px">{{item1.gender}}</td>
+      <td colspan="2" width="50px">出生年月</td>
+      <td colspan="2" width="70px">{{item1.birth}}</td>
+      <td rowspan="4" width="240px"><img src="../Images/IMG1.jpg" width="95%" style="display:block;"></td>
+    </tr>
+    <tr align="center">
+      <td width="30px" height="80px" align="center">民族</td>
+      <td width="70px" colspan="3">{{item1.nation}}</td>
+      <td colspan="2" width="30px">籍贯</td>
+      <td colspan="2" width="50px">{{item1.birthplace}}</td>
+      <td colspan="2" width="50px">政治面貌</td>
+      <td colspan="2" width="70px">{{item1.political}}</td>
+    </tr>
+    <tr align="center">
+      <td width="30px" height="80px" align="center">学院</td>
+      <td width="70px" colspan="3">{{item1.college}}</td>
+      <td colspan="2" width="30px">年级</td>
+      <td colspan="2" width="50px">{{item1.grade}}</td>
+      <td colspan="2" width="50px">学制</td>
+      <td colspan="2" width="70px">{{item1.majorset}}</td>
+    </tr>
+    <tr align="center">
+      <td width="30px" height="80px" align="center">培养类别</td>
+      <td width="70px" colspan="3">{{item1.eduset}}</td>
+   
+      <td colspan="2" width="30px">手机</td>
+      <td colspan="2" width="50px">{{item1.phone}}</td>
+  
+      <td colspan="2" width="50px">电子邮件</td>
+      <td colspan="2" width="70px">{{item1.email}}</td>
+    </tr>
+    <tr>
+      <td width="10%" height="270;" align="center">教育背景（高中起）</td>
+      <td colspan="16">{{item1.eduback}}</td>
+    </tr>
+    <tr>
+      <td width="10%" height="270;" align="center">研究生学生工作经历</td>
+      <td colspan="16">{{item1.ug_exp}}</td>
+    </tr>
+    <tr>
+      <td width="10%" height="270;" align="center">其他阶段学生工作经历</td>
+      <td colspan="16">{{item1.other_exp}}</td>
+    </tr>
+  </table>
+
         
           
       </v-card-content>
+      
     </v-card>
     
     <v-card>
@@ -65,7 +111,9 @@
 
 </template>
 
+
 <script>
+
 import util from '@/utils.js'
 import attributedata from '@/api/attributedata'
 import projectdata from '@/api/projectdata'
@@ -78,7 +126,8 @@ export default {
       pj:[],
       usr:[],
       stu_id:'',
-      show:false
+      show:false,
+      //htmlTitle: '页面导出PDF文件名'
       //adata:[],
     }
   },
@@ -111,9 +160,9 @@ export default {
     check(v){
       util.toRouter_a('search_res_child',this,v)
       this.show = !this.show
-    }
-    
-  },
+    },
+   
+    }, 
  
   created: function () {
     console.log("thisis pdisplay created")

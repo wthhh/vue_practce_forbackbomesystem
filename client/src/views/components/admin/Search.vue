@@ -1,5 +1,6 @@
 <template>
     <v-card>
+    <v-btn id="exportToPdf" style="margin-left:45%;" @click="getPdf()">导出用户信息表</v-btn>
         <v-card-text>
             <v-form class="px-3" ref="form">
                 <span class="">Search by stu_id</span>
@@ -25,7 +26,8 @@ export default {
   data () {
     return {
       data:[],
-      stu_id:''
+      stu_id:'',
+      htmlTitle:'复旦大学骨干信息表'
     }
   },
 
