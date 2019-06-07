@@ -1,7 +1,5 @@
 .DS_Store
 .idea
 /reference
-*.jpg
-*.zip
 ./vscode
 
