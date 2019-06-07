@@ -8,8 +8,9 @@
                         <v-layout row >
                             <v-flex xs5 mt4>
                                 <v-img
-                                src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
-                                height="75px"
+                                :src="userInfo['image']"
+                                height="95px"
+                                weight="75px"
                                 contain
                                 ></v-img>
                             </v-flex>
@@ -47,6 +48,7 @@ export default {
     props:['psid','sname','puid','paid'],
     data(){
         return{
+            image:null,
             selectedfile:null,
             username:'',
             nativeplace:'',
@@ -99,48 +101,6 @@ export default {
     methods:{
         async toEditProfile(){
             util.toRouter('/user/home/editprofile',this)
-        },
-        fileSelect(event){
-            // console.log(event)
-            this.selectedfile=event.target.files[0]
-
-        },
-        async submit(){
-        console.log("this is child sid")
-        console.log(this.userInfo)
-        let forrm = {
-            uid:this.userInfo.uid,       
-                 image:this.selectedfile,
-
-            stu_id:this.userInfo.stu_id,
-            username:this.username,
-            gender:this.genderselect,
-            birth:this.date,
-            nation:this.nationselect,
-            birthplace:this.nativeplace,
-            political:this.politicalselect,
-            college:this.college,
-            grade:this.grade,
-            majorset:this.majorset,
-            eduset:this.eduset,
-            phone:this.phone,
-            email:this.email,
-            eduback:this.eduback,
-            ug_exp:this.ug_exp,
-            other_exp:this.other_exp,
-        }
-        console.log("this is ffooommmm")
-        console.log(forrm)
-        let res = null
-          //console.log("now is coming to here")
-        res = await profiledata.update(forrm)
-        //util.response(res, this)
-        //console.log(res)
-        if (res.code === 200) {
-          console.log("update profile sucesss")
-        } else {
-          console.log("update profile faillll")
-        }
         },
         savedate (date) {
           this.$refs.menu.save(date)

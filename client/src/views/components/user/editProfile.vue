@@ -50,6 +50,7 @@ export default {
     props:['psid','sname','puid','paid'],
     data(){
         return{
+            image:null,
             selectedfile:null,
             username:'',
             realname:'',
@@ -104,16 +105,11 @@ export default {
     },
     methods:{
         init(){
-            // uid=this.userInfo.uid,       
-            // image=this.selectedfile,
-            // stu_id=this.userInfo.stu_id,
-            console.log("init");console.log(this.userInfo);
             this.username=this.userInfo.username,
             this.realname=this.userInfo.realname,
-            
+            this.selectedfile=this.userInfo.image,
             this.genderselect=this.userInfo.gender,
             this.date=this.userInfo.date,
-            this.savedate(this.userInfo.date);
             this.nationselect=this.userInfo.nation,
             this.nativeplace=this.userInfo.nativeplace,
             this.politicalselect=this.userInfo.political,
@@ -135,14 +131,38 @@ export default {
             util.toRouter('/user/home/profile',this)
             }
         },
+        
         fileSelect(event){
-            // console.log(event)
-            this.selectedfile=event.target.files[0]
+            console.log("ssssssssssss")
+            var a=this;
+            var reader = new FileReader();
+            var AllowImgFileSize = 2100000; //上传图片最大值(单位字节)（ 2 M = 2097152 B ）超过2M上传失败
+            var file = event.target.files[0]
+            var imgUrlBase64;
+            if (file) {
+                //将文件以Data URL形式读入页面  
+                imgUrlBase64 = reader.readAsDataURL(file);
+                console.log(imgUrlBase64);
+    
+                reader.onload = function (e) {
+                //var ImgFileSize = reader.result.substring(reader.result.indexOf(",") + 1).length;//截取base64码部分（可选可不选，需要与后台沟通）
+                if (AllowImgFileSize != 0 && AllowImgFileSize < reader.result.length) {
+                        alert( '上传失败，请上传不大于2M的图片！');
+                        return;
+                    }else{
+                        //执行上传操作
+                        a.selectedfile=reader.result;
+                        console.log(a.selectedfile)
+                        console.log(reader.result);
+                    }
+                }
+            }          
 
         },
+
         async submit(){
         console.log("this is child sid")
-        console.log(this.userInfo)
+        console.log(this.selectedfile)
         let forrm = {
             uid:this.userInfo.uid,       
             image:this.selectedfile,
@@ -174,9 +194,9 @@ export default {
         if (res.code === 200) {
             this.$store.commit('setUserInfo',forrm)
             console.log(forrm)
-            console.log(this.userInfo)
             alert("修改成功")
-                        this.init();
+            sessionStorage.setItem('user', JSON.stringify(forrm))
+            this.init();
 
         } else {
             alert("修改失败")
@@ -189,7 +209,7 @@ export default {
     },
     mounted() {
          this.init();
-    }
+    },
 }
 </script>
     
