@@ -1,5 +1,5 @@
 <template lang="pug">
-  <p>this is muen</p>
+  <p>this is menu</p>
 </template>
 <script>
 

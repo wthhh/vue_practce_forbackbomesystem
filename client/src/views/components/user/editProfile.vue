@@ -11,29 +11,62 @@
                 <span class=""><v-icon >account_box</v-icon>上传照片</span>
                 <div id="fileArea">
                     <input type="file" name="image" accept="image/*"  @change="fileSelect"/>
-                </div>
-                
-                <v-text-field label="user name" v-model="username" prepend-icon="person"></v-text-field>
-                <v-text-field label="real name" v-model="realname" prepend-icon="person"></v-text-field>
-                <v-select v-model="genderselect" :items="genderitems" label="gender" prepend-icon="wc"></v-select>
-                <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :nudge-right="40" lazy transition="scale-transition" offset-y full-width min-width="290px">
-                  <template v-slot:activator="{ on }">
-                    <v-text-field v-model="date" label="Birthday date" prepend-icon="event" readonly v-on="on"></v-text-field>
-                  </template>
-                <v-date-picker ref="picker" v-model="date" :max="new Date().toISOString().substr(0, 10)" min="1950-01-01" @change="savedate"></v-date-picker>
-                </v-menu>
-                <v-select v-model="nationselect" :items="nationitems" label="nation" prepend-icon="home"></v-select>
-                <v-text-field label="native place" v-model="nativeplace" prepend-icon="place"></v-text-field>
-                <v-select v-model="politicalselect" :items="politicalitems" label="political outlook" prepend-icon="group"></v-select>
-                <v-text-field label="college" v-model="college" prepend-icon="school"></v-text-field>
-                <v-text-field label="grade" v-model="grade" prepend-icon="school"></v-text-field>
-                <v-text-field label="majorset" v-model="majorset" prepend-icon="school"></v-text-field>
-                <v-text-field label="eduset" v-model="eduset" prepend-icon="school"></v-text-field>
-                <v-text-field label="phone" v-model="phone" prepend-icon="school"></v-text-field>
-                <v-text-field label="email" v-model="email" prepend-icon="school"></v-text-field>
-                <v-textarea label="edu background" v-model="eduback" prepend-icon="edit"></v-textarea>
-                <v-textarea label="gra exp" v-model="ug_exp" prepend-icon="edit"></v-textarea>
-                <v-textarea label="other exp" v-model="other_exp" prepend-icon="edit"></v-textarea>
+                </div>    
+                <v-layout wrap align-center justify-start >
+                    <v-flex xs12 sm6 >
+                        <v-text-field label="user name" v-model="username" prepend-icon="person"></v-text-field>
+                    </v-flex>
+                    <v-flex xs12 sm6>
+                        <v-text-field label="real name" v-model="realname" prepend-icon="person"></v-text-field>
+                    </v-flex>
+                    <v-flex xs12 sm6>
+                        <v-select v-model="genderselect" :items="genderitems" label="gender" prepend-icon="wc"></v-select>
+                    </v-flex>
+                    <v-flex xs12 sm6>
+                        <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :nudge-right="40" lazy transition="scale-transition" offset-y full-width min-width="290px">
+                            <template v-slot:activator="{ on }">
+                                <v-text-field v-model="date" label="Birthday date" prepend-icon="event" readonly v-on="on"></v-text-field>
+                            </template>
+                            <v-date-picker ref="picker" v-model="date" :max="new Date().toISOString().substr(0, 10)" min="1950-01-01" @change="savedate"></v-date-picker>
+                        </v-menu>
+                    </v-flex>
+                    <v-flex xs12 sm6>
+                        <v-select v-model="nationselect" :items="nationitems" label="nation" prepend-icon="home"></v-select>
+                    </v-flex>
+                    <v-flex xs12 sm6>
+                        <v-text-field label="native place" v-model="nativeplace" prepend-icon="place"></v-text-field>
+                    </v-flex>
+                    <v-flex xs12 sm6>
+                        <v-select v-model="politicalselect" :items="politicalitems" label="political outlook" prepend-icon="group"></v-select>
+                    </v-flex>
+                    <v-flex xs12 sm6>
+                        <v-text-field label="college" v-model="college" prepend-icon="school"></v-text-field>
+                    </v-flex>
+                    <v-flex xs12 sm6>
+                        <v-text-field label="grade" v-model="grade" prepend-icon="school"></v-text-field>
+                    </v-flex>
+                    <v-flex xs12 sm6>
+                        <v-text-field label="majorset" v-model="majorset" prepend-icon="school"></v-text-field>
+                    </v-flex>
+                    <v-flex xs12 sm6>
+                        <v-text-field label="eduset" v-model="eduset" prepend-icon="school"></v-text-field>
+                    </v-flex>
+                    <v-flex xs12 sm6>
+                        <v-text-field label="phone" v-model="phone" prepend-icon="school"></v-text-field>
+                    </v-flex>
+                    <v-flex xs12 sm6>
+                        <v-text-field label="email" v-model="email" prepend-icon="school"></v-text-field>
+                    </v-flex>
+                    <v-flex xs12 sm12>
+                        <v-textarea label="edu background" v-model="eduback" prepend-icon="edit"></v-textarea>
+                    </v-flex>
+                    <v-flex xs12 sm12>
+                        <v-textarea label="gra exp" v-model="ug_exp" prepend-icon="edit"></v-textarea>
+                    </v-flex>
+                    <v-flex xs12 sm12>
+                        <v-textarea label="other exp" v-model="other_exp" prepend-icon="edit"></v-textarea>
+                    </v-flex>
+                </v-layout>
                 <v-spacer></v-spacer>
                 <v-btn flat right class="primary mt-0 mt-3" @click="submit">Submit</v-btn>
             </v-form>

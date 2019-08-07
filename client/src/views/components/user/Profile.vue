@@ -6,7 +6,7 @@
                 <div class="userInfoFrame item elevation-5">
                     <div class="left-part">
                         <v-layout row >
-                            <v-flex xs5 mt4>
+                            <v-flex xs5 mt4 >
                                 <v-img
                                 :src="userInfo['image']"
                                 height="95px"
@@ -26,6 +26,9 @@
 
                         <v-btn flat right class="warning mt-5 ml-5" @click="toEditProfile">
                             编辑个人信息
+                        </v-btn>
+                        <v-btn flat right class="success mt-5 ml-5" @click="toProfilePdf">
+                            导出pdf
                         </v-btn>
                     </div>
                     <div class="right-part">
@@ -101,6 +104,9 @@ export default {
     methods:{
         async toEditProfile(){
             util.toRouter('/user/home/editprofile',this)
+        },        
+        async toProfilePdf(){
+            util.toRouter('/user/home/profilePdf',this)
         },
         savedate (date) {
           this.$refs.menu.save(date)

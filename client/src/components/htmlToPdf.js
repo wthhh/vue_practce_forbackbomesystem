@@ -19,7 +19,7 @@ export default{
         let imgWidth = 592.28
         let imgHeight = 595.28 / contentWidth * contentHeight
         let pageData = canvas.toDataURL('image/jpeg', 1.0)
-        console.log(pageData)
+        // console.log(pageData)
         let PDF = new JsPDF('', 'pt', 'a4')
         if (leftHeight < pageHeight) {
           PDF.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight)

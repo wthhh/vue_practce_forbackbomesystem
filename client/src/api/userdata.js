@@ -12,8 +12,13 @@ let readbystuid = async (id) => {
   let result = await http.get(url, {})
   return result
 }
-
+let newuser = async (id) => {
+  let url = path + '/newuser?id=' + id
+  let result = await http.get(url, {})
+  return result
+}
 export default{
   index,
-  readbystuid
+  readbystuid,
+  newuser
 }

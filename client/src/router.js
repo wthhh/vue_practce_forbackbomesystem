@@ -8,6 +8,7 @@ import Display from '@/views/components/user/Display'
 import Pdisplay from '@/views/components/user/Pdisplay'
 import Profile from '@/views/components/user/Profile'
 import EditProfile from '@/views/components/user/EditProfile'
+import ProfilePdf from '@/views/components/user/ProfilePdf'
 import Adisplay from '@/views/components/admin/Adisplay'
 import comps from './components/admin'
 import util from './utils'
@@ -17,6 +18,7 @@ export const publicRouter = [
     { path: '/admin/login', component: () => import('@/views/admin/Login'), hidden: true },
     { name:"admin_home",path: '/admin/home', component: () => import('@/views/admin/Home'), hidden: true, children:[
       {path:'/admin/home/dashboard',component: () =>import('@/views/components/admin/Dashboard')},
+      {name:"admin_newuser",path:'/admin/home/newuser',component: () =>import('@/views/components/admin/NewUser'),hidden: true},
       {name:"admin_search",path:'/admin/home/search',component: () =>import('@/views/components/admin/Search'),hidden: true, children:[
           {name:"search_res",path:'/admin/home/search_res',component: () =>import('@/views/components/admin/Search_res'),hidden:true,children:[
               {name:"search_res_child",path:'/admin/home/search_res_child',component: () =>import('@/views/components/admin/Search_res_child')}
@@ -39,6 +41,7 @@ export const publicRouter = [
       {path:'/user/home/pdisplay',component: Pdisplay},
       {path:'/user/home/profile',component: Profile},
       {path:'/user/home/editprofile',component: EditProfile},
+      {path:'/user/home/profilePdf',component: ProfilePdf},
     ]},
     { path: '/user/404', component: () => import('@/views/user/404'), hidden: true },
     { path: '/user/submit', component: () =>import('@/views/user/submit'),hidden: true},

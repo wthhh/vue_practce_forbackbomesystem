@@ -112,14 +112,35 @@ class User extends Model
         }
     }
 
-    public function getUserBystuId($id = null)
+    public function getUserBystuId($stuId = null)
     {
-        $res = $this->all(['stu_id' =>$id]);
+        $res = $this->all(['stu_id' =>$stuId]);
         if ($res) {
             return $res;
         } else {
             $this->error = '当前查询不存在';
             return false;
+        }
+    }
+
+    public function addNewUserWithstuId($stuId)
+    {
+        $data=[
+            'stu_id'=> $stuId,
+        ];
+        if (!$this->where("stu_id",$stuId)->find()){
+            try {
+                $this->insert($data);
+                return 200;
+            } catch (\Exception $e) {
+                $this->error = '添加失败';
+                return 100;
+            }
+        }
+        else{
+            $this->error = '该学号已存在';
+            return 403;
+
         }
     }
 }

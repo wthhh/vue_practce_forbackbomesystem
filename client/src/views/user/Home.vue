@@ -1,6 +1,6 @@
 <template lang="pug">
   <v-app>
-    <v-navigation-drawer class="primary" :mini-variant="miniVariant" :clipped="clipped" v-model="drawer" fixed app>
+    <v-navigation-drawer class="primary" :mini-variant="miniVariant" :clipped="clipped" v-model="drawer" fixed app >
       //- div.pa-4.text-xs-center
       //-   div.display-1.py-4(style="color:#1565C0")
       //- <v-divider></v-divider>

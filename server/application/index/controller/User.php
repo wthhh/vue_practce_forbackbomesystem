@@ -158,8 +158,6 @@ class User extends Controller
             return msg(100, null, $this->model->getError());
         }
     }
- 
-
 	public function readbystuid()
     {
         $id = $this->param['id'];
@@ -169,6 +167,19 @@ class User extends Controller
         } else {
             return msg(100, null, $this->model->getError());
         }
+    }
+    
+    public function newuser()
+    {
+        $id = $this->param['id'];
+
+        $ret = $this->model->addNewUserWithstuId($id);
+        if ($ret==200) {
+            return msg(200, $ret);
+        } else   {
+            return msg($ret, null, $this->model->getError());
+        }
+
     }
 
    

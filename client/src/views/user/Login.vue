@@ -58,7 +58,7 @@ export default {
           sessionStorage.setItem('user', JSON.stringify(res.data))
           //sessionStorage.setItem('token', res.data.token)
           // console.log(sessionStorage)
-          console.log("now is in async methods")
+      console.log(this.$store.getters.getUserInfo)
           util.toRouter('home', this)
         } else {
           console.log('now is ref data')

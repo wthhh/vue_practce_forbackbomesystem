@@ -48,13 +48,38 @@
     <v-expansion-panel>
         <v-expansion-panel-content class="primary white--text" text-align-left>
           <template v-slot:header>
-            <span class="font-weight-bold headline">Search</span>
+            <span class="font-weight-bold headline">User Management</span>
            
           </template>
           <v-list class="py-0">
             <v-list-tile class="primary" router to="/admin/home/search">
               <v-list-tile-content>
-                    <v-list-tile-title class="white--text mx-3">search by stu_id</v-list-tile-title>
+                    <v-list-tile-title class="white--text mx-3">search user</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile class="primary" router to="/admin/home/newuser">
+              <v-list-tile-content>
+                    <v-list-tile-title class="white--text mx-3">new user</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-expansion-panel-content>
+    </v-expansion-panel>
+    <v-expansion-panel>
+        <v-expansion-panel-content class="primary white--text" text-align-left>
+          <template v-slot:header>
+            <span class="font-weight-bold headline">Statistics</span>
+           
+          </template>
+          <v-list class="py-0">
+            <v-list-tile class="primary" router to="/admin/home/search">
+              <v-list-tile-content>
+                    <v-list-tile-title class="white--text mx-3">search user</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile class="primary" router to="/admin/home/newuser">
+              <v-list-tile-content>
+                    <v-list-tile-title class="white--text mx-3">new user</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
           </v-list>
