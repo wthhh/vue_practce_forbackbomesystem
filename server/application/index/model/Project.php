@@ -26,9 +26,9 @@ class Project extends Model
         }
     }
 	
-    public function getProjectattById($id = null)
+    public function getProjectsecById($id = null)
     {
-    $res = $this->all(['aid' => $id]);
+    $res = $this->all(['sid' => $id]);
         if ($res) {
             return $res;
         } else {

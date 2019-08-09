@@ -32,11 +32,11 @@
       <v-expansion-panel>
         <v-expansion-panel-content class="primary white--text" text-align-left>
           <template v-slot:header>
-            <span class="font-weight-bold headline">Section</span>
+            <span class="font-weight-bold headline">Secssstion</span>
             <Ipopup/>
           </template>
           <v-list class="py-0">
-            <v-list-tile v-for="item in data" :key="item.sid" class="primary" router to="/admin/home/adisplay" @click="send(item)">
+            <v-list-tile v-for="item in data" :key="item.sid" class="primary" router to="/admin/home/pdisplay" @click="send(item)">
               <v-list-tile-content>
                     <v-list-tile-title class="white--text mx-3">{{item.classname}}</v-list-tile-title>
               </v-list-tile-content>
@@ -72,14 +72,9 @@
            
           </template>
           <v-list class="py-0">
-            <v-list-tile class="primary" router to="/admin/home/search">
+            <v-list-tile class="primary" router to="/admin/home/chart">
               <v-list-tile-content>
-                    <v-list-tile-title class="white--text mx-3">search user</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile class="primary" router to="/admin/home/newuser">
-              <v-list-tile-content>
-                    <v-list-tile-title class="white--text mx-3">new user</v-list-tile-title>
+                    <v-list-tile-title class="white--text mx-3">Chart</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
           </v-list>
@@ -105,7 +100,6 @@ import Testdata from '@/views/components/admin/Testdata'
 import util from '@/utils'
 import api from '@/api'
 import sectiondata from '@/api/sectiondata'
-import attributedata from '@/api/attributedata'
 import projectdata from '@/api/projectdata'
 import Ipopup from '@/views/components/admin/Ipopup'
 import bus from '@/bus'
@@ -159,6 +153,9 @@ export default {
       //util.response(res, this)
       if (res.code === 200) {
         this.data = res.data
+                console.log("this.data")
+
+        console.log(this.data)
       }
       // console.log("now i wanttt project")
       // let pres = await projectdata.readstu(this.userInfo['uid'])
@@ -177,69 +174,25 @@ export default {
         this.data = s_res.data
       };
     },
-    async getAttribute(v)
-    {
-      let ares = await attributedata.readsec(v);
-      return ares;
-    },
     async getProject(v)
     {
-      let pres = await projectdata.readatt(v);
+      let pres = await projectdata.readsec(v);
       return pres;
     },
-    // async getAtt(v)
-    // {
-    //   this.adata = await this.getAttribute(v);
-    // },
+
     send (v){
-        // console.log("this is home sned")
-        // bus.$emit('val',v)
-        // console.log("this is home send the data val")
-        let iidaa = this.getAttribute(v.sid)
+        let iidaa = this.getProject(v.sid)
         let self = this
       
         iidaa .then(result => {
           console.log(result)
            let iform={
             sec:v,
-            att:result
+            pj:result
           }
           console.log(iform)
           bus.$emit('val',iform)
-          /*var prodata = []
-          for (var i = 0; i < result.data.length; i++) {
-            
-            
-            //console.log(v)
-            prodata.push(self.getProject(result.data[i].aid))
-          };
-            console.log(prodata)
-            for (var i = 0; i < result.data.length; i++) {
-             
-       
-            prodata[i] .then(pres =>{
-              var v = 'val'+i
-              console.log(pres)
-              let iform1={
-                pj:pres
-              }
-              
-              bus.$emit('val'+i,iform1)
-              console.log(iform1)
-              console.log('val'+i)
-          })
-        };
-          bus.$emit('count',i)
-          //console.log(i)
-          //console.log(iform1)
-          console.log(iform)
-         
-          console.log("eeeeeeeeeeeeeeeeeennnnnnnnnnnnnnnn")*/
-
         })
-        console.log("iiiiiiiirrrrrrrrrrrreeeeeeeeeeeeesssssssssss")
-
-        console.log("this is home send the data val")
     }
   },
   created() {

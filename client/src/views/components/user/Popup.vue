@@ -15,7 +15,6 @@
                     <v-layout>
                         <div  ref="editor" style="text-align:left;width:100%;float:left"></div>
                     </v-layout>      
-                    <v-btn flat right class="warning mt-0 mt-3" @click="getContent()">测试</v-btn>
 
                     <v-btn flat right class="primary mt-0 mt-3" @click="submit">Submit</v-btn>
 

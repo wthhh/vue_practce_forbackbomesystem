@@ -143,4 +143,38 @@ class User extends Model
 
         }
     }
+    public function getNationNumber($nation)
+    {
+        $data=[
+            'nation'=> $nation,
+        ];
+        # no valid here , consider data accurate 
+        $res = $this->where($data)->count();        
+        return $res;
+
+        
+    }
+    public function getGenderNumber($gender)
+    {
+        $data=[
+            'gender'=> $gender,
+        ];
+        # no valid here , consider data accurate 
+        $res = $this->where($data)->count();       
+         return $res;
+
+        
+    }
+    public function getPoliticalNumber($political)
+    {
+        $data=[
+            'political'=> $political,
+        ];
+        # no valid here , consider data accurate 
+        $res = $this->where($data)->count();        
+        return $res;
+
+        
+    }
+    
 }

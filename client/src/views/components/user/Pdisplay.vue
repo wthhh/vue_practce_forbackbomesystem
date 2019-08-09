@@ -8,7 +8,7 @@
       </v-card-title>
       <v-card-content class="ma-3 px-4">
           <!-- <p>{{recval.pj.content}}</p> -->
-          <p v-html="recval.pj.content"></p>
+          <p style="margin:18px;" v-html="recval.pj.content"></p>
       </v-card-content>
     </v-card>
     <v-expansion-panel>
@@ -16,8 +16,9 @@
             <template v-slot:header>
                 <div>{{item.title}}</div>
             </template>
+            
             <v-card>
-                <v-card-text>{{item.content}}</v-card-text>
+                <v-card-text >{{item.content}}</v-card-text>
             </v-card>
         </v-expansion-panel-content>
     </v-expansion-panel>

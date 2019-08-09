@@ -2,17 +2,20 @@
     <v-card>
         <v-card-text>
             <v-btn flat right class="warning mt-0 mt-3" @click="toProfile">
-                Profile
-            </v-btn>
-            <v-btn flat right class="success mt-0 mt-3" @click="test">
-                test
+                个人界面
             </v-btn>
             <v-form class="px-3" ref="form">
-                <span class=""><v-icon >account_box</v-icon>上传照片</span>
-                <div id="fileArea">
-                    <input type="file" name="image" accept="image/*"  @change="fileSelect"/>
-                </div>    
                 <v-layout wrap align-center justify-start >
+                    <v-flex xs12 sm12 >
+
+                    <span class=""><v-icon >account_box</v-icon>上传照片</span>
+                    <div id="fileArea">
+                        <input type="file" name="image" accept="image/*"  @change="fileSelect"/>
+                    </div> 
+                    </v-flex>     
+                    <v-flex xs12 sm12 >
+                        <img :src="this.selectedfile" style="display:block;max-height:150px;margin-left:32px;">
+                    </v-flex>
                     <v-flex xs12 sm6 >
                         <v-text-field label="user name" v-model="username" prepend-icon="person"></v-text-field>
                     </v-flex>
@@ -96,7 +99,7 @@ export default {
             genderitems: ['Male', 'Female'],
             genderselect:'',
             politicalitems: ['中共党员','中共预备党员','共青团员','民革党员','民盟盟员','民建会员','民进会员','农工党党员','致公党党员','九三学社社员','台盟盟员','无党派人士','群众'],
-            nationitems:['汉族','满族','蒙古族','回族','藏族','维吾尔族','苗族','彝族','壮族','布依族','侗族','瑶族','白族','土家族','哈尼族','哈萨克族','傣族','黎族','傈僳族','佤族','畲族','高山族','拉祜族','水族','东乡族','纳西族','景颇族','柯尔克孜 族','土族','达斡尔族','仫佬族','羌族','布朗族','撒拉族','毛南族','仡佬族','锡伯族','阿昌族','普米族','朝鲜族','塔吉克族','怒族','乌孜别克族','俄罗斯族','鄂温克族','德昂族','保安族','裕固族','京族','塔塔尔族','独龙族','鄂伦春族','赫哲族','门巴族','珞巴族','基诺族',],
+            nationitems:['汉族','满族','蒙古族','回族','藏族','维吾尔族','苗族','彝族','壮族','布依族','侗族','瑶族','白族','土家族','哈尼族','哈萨克族','傣族','黎族','傈僳族','佤族','畲族','高山族','拉祜族','水族','东乡族','纳西族','景颇族','柯尔克孜族','土族','达斡尔族','仫佬族','羌族','布朗族','撒拉族','毛南族','仡佬族','锡伯族','阿昌族','普米族','朝鲜族','塔吉克族','怒族','乌孜别克族','俄罗斯族','鄂温克族','德昂族','保安族','裕固族','京族','塔塔尔族','独龙族','鄂伦春族','赫哲族','门巴族','珞巴族','基诺族',],
             politicalselect:'',
             nationselect:'',
             college:'',
@@ -130,8 +133,6 @@ export default {
             return this.paid
         },
         userInfo:function () {
-             console.log("now is Profile STTTTTTORE")
-            console.log(this.$store)
             return this.$store.getters.getUserInfo
         },
         
@@ -156,9 +157,6 @@ export default {
             this.ug_exp=this.userInfo.ug_exp,
             this.other_exp=this.userInfo.other_exp
         },
-        async test(){
-            this.init();
-        },
         async toProfile(){
             if (confirm("你确定要离开吗，已填写的信息可能丢失？是－选择确定，否-选择取消")){
             util.toRouter('/user/home/profile',this)
@@ -166,7 +164,6 @@ export default {
         },
         
         fileSelect(event){
-            console.log("ssssssssssss")
             var a=this;
             var reader = new FileReader();
             var AllowImgFileSize = 2100000; //上传图片最大值(单位字节)（ 2 M = 2097152 B ）超过2M上传失败
@@ -185,8 +182,6 @@ export default {
                     }else{
                         //执行上传操作
                         a.selectedfile=reader.result;
-                        console.log(a.selectedfile)
-                        console.log(reader.result);
                     }
                 }
             }          

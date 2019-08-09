@@ -18,7 +18,7 @@
           <table align="center" border="1" cellspacing="0" width="75%" style="margin-left:auto;margin-right:auto;">
             <tr align="center">
               <td width="30px" height="80px" align="center">姓名</td>
-              <td width="70px" colspan="3">{{userInfo['username']}}</td>
+              <td width="70px" colspan="3">{{userInfo['realname']}}</td>
               <td colspan="2" width="30px">性别</td>
               <td colspan="2" width="50px">{{userInfo['gender']}}</td>
               <td colspan="2" width="50px">出生年月</td>

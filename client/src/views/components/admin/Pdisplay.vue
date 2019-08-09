@@ -1,32 +1,21 @@
 <template>
     <div>
-    <v-card>
-      <Ppopup :paid="recval.att.aid"/>
+    
       <v-list>
-            <v-list-tile v-for="item in recval.pj.data" :key="item.pid" class="primary">
+            <v-list-tile v-for="item in recval.pj.data" :key="item.pid" @click=""  class="">
               <v-list-tile-content >
-                    <v-list-tile-title class="white--text mx-3">{{item.pname}}<button class="btn" @click="send(item)">查看</button></v-list-tile-title>
+                    <v-list-tile-title  class=" mx-3">{{item.pname}}<button class="btn" @click="send(item)"><v-icon>find_in_page</v-icon></button></v-list-tile-title>
               </v-list-tile-content>
              
             </v-list-tile>
           </v-list>
     <router-view v-if="show"></router-view>
-    <!-- <v-expansion-panel>
-        <v-expansion-panel-content v-for="item in recval.att.data" :key="item.aid">
-            <template v-slot:header>
-                <div>{{item.aname}}</div>
-            </template>
-            <v-card>
-                <v-card-text>{{item.aname}}</v-card-text>
-            </v-card>
-        </v-expansion-panel-content>
-    </v-expansion-panel> -->
-    </v-card>
+        <Ppopup :psid="recval.sec.sid"/>
+
     </div>
 </template>
 <script>
 import Bus from '@/bus.js'
-import attributedata from '@/api/attributedata'
 import projectdata from '@/api/projectdata'
 import issuedata from '@/api/issuedata'
 import Ppopup from './Ppopup'
@@ -45,18 +34,6 @@ export default {
     Ipopup
   },
   methods: {
-    // async getAttrData(v) {
-    //   console.log("now is diaplay get AAAATTTTRRR data")
-    //   let res = await attributedata.readatt(v)
-    //   //console.log("asdasdas")
-    //   //util.response(res, this)
-    //   if (res.code === 200) {
-    //     this.adata = res.data
-    //     console.log("GGGGG is entered")
-    //     console.log(res.data)
-    //     //console.log("9999999999")
-    //   }
-    // },
      async getData () {
       console.log("now is diaplay getdata")
       let res = await projectdata.read()
@@ -91,35 +68,12 @@ export default {
         })*/
     }
   },
-  // mounted: function () {
-  //   var vm = this
-  //   // 用$on事件来接收参数
-  //   Bus.$on('val', (data) => {
-  //     //console.log(data)
-  //     vm.recval = data
-  //     this.getAttrData(this.recval.sid)
-  //   })
-  //   console.log("now is into get ATTTTTTTRR data siddddddddddd")
-  //   console.log(this.recval)
-  //   console.log("enddddddddddddddddd")
-    
-  // },
-  // created: function () {
-  //   console.log("thisis display created")
-  // },
-  // computed: {
-  //   userInfo () {
-  //     console.log("now is into userinfo")
-  //     console.log(this.$store.getters.getUserInfo)
-  //     return this.$store.getters.getUserInfo
-  //   }
-  // },
   mounted: function () {
     var vm = this
-    console.log('this is mounted')
+    console.log('this is mountedsss')
     // 用$on事件来接收参数
-    Bus.$on('val1', (data) => {
-      //console.log(data)
+    Bus.$on('val', (data) => {
+      console.log(data)
       vm.recval = data
     })
   },
@@ -131,13 +85,12 @@ export default {
 </script>
 <style>
 .btn{
+  /* background-color: cornflowerblue;
   color:black;
   display: block;
   text-align: center;
   width: 100px;
-  height: 25px;
-  border: 1.5px solid black;
-  box-shadow: 0px 0px 10px white;
+  height: 25px; */
   float: right;
   margin-right:5%;
 }

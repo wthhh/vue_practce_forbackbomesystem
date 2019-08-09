@@ -22,6 +22,11 @@
                       <v-list-tile-title class="white--text mx-3">User Profile</v-list-tile-title>
                 </v-list-tile-content>
               </v-list-tile>
+              <v-list-tile class="primary" router to="/user/home/EditProfile">
+                <v-list-tile-content>
+                      <v-list-tile-title class="white--text mx-3">Modify Personal Information</v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
             </v-list>
           </v-expansion-panel-content>
       </v-expansion-panel>

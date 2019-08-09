@@ -45,10 +45,10 @@ class Project extends Controller
         }
     }
 	
-    public function readatt()
+    public function readsec()
     {
         $id = $this->param['id'];
-        $ret = $this->model->getProjectattById($id);
+        $ret = $this->model->getProjectsecById($id);
         if ($ret) {
             return msg(200, $ret);
         } else {

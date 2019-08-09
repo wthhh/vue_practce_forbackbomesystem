@@ -44,7 +44,6 @@
 
 <script>
 import Bus from '@/bus.js'
-import attributedata from '@/api/attributedata'
 import projectdata from '@/api/projectdata'
 import issuedata from '@/api/issuedata'
 import userdata from '@/api/userdata'

@@ -18,7 +18,7 @@
           <table align="center" border="1" cellspacing="0" width="75%" style="margin-left:auto;margin-right:auto;">
             <tr align="center">
               <td width="30px" height="80px" align="center">姓名</td>
-              <td width="70px" colspan="3">{{item1.username}}</td>
+              <td width="70px" colspan="3">{{item1.realname}}</td>
               <td colspan="2" width="30px">性别</td>
               <td colspan="2" width="50px">{{item1.gender}}</td>
               <td colspan="2" width="50px">出生年月</td>
@@ -122,7 +122,6 @@
 <script>
 
 import util from '@/utils.js'
-import attributedata from '@/api/attributedata'
 import projectdata from '@/api/projectdata'
 import issuedata from '@/api/issuedata'
 import userdata from '@/api/userdata'

@@ -3,13 +3,11 @@ import Router from 'vue-router'
 import store from '@/store'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
-import Testdata from '@/views/components/admin/Testdata'
 import Display from '@/views/components/user/Display'
 import Pdisplay from '@/views/components/user/Pdisplay'
 import Profile from '@/views/components/user/Profile'
 import EditProfile from '@/views/components/user/EditProfile'
 import ProfilePdf from '@/views/components/user/ProfilePdf'
-import Adisplay from '@/views/components/admin/Adisplay'
 import comps from './components/admin'
 import util from './utils'
 Vue.use(Router)
@@ -18,17 +16,15 @@ export const publicRouter = [
     { path: '/admin/login', component: () => import('@/views/admin/Login'), hidden: true },
     { name:"admin_home",path: '/admin/home', component: () => import('@/views/admin/Home'), hidden: true, children:[
       {path:'/admin/home/dashboard',component: () =>import('@/views/components/admin/Dashboard')},
+      {path:'/admin/home/chart',component: () =>import('@/views/components/admin/Chart')},
       {name:"admin_newuser",path:'/admin/home/newuser',component: () =>import('@/views/components/admin/NewUser'),hidden: true},
       {name:"admin_search",path:'/admin/home/search',component: () =>import('@/views/components/admin/Search'),hidden: true, children:[
           {name:"search_res",path:'/admin/home/search_res',component: () =>import('@/views/components/admin/Search_res'),hidden:true,children:[
               {name:"search_res_child",path:'/admin/home/search_res_child',component: () =>import('@/views/components/admin/Search_res_child')}
           ]},
       ]},
-      {path:'/admin/home/testdata',component: Testdata},
-      {path:'/admin/home/adisplay',component: Adisplay, hidden:true, children:[
-         {path:'/admin/home/pdisplay',component: () =>import('@/views/components/admin/Pdisplay'),hidden:true,children:[
+      {path:'/admin/home/pdisplay',component: () =>import('@/views/components/admin/Pdisplay'), hidden:true, children:[
             {name:"Idisplay",path:'/admin/home/idisplay',component: () =>import('@/views/components/admin/Idisplay')},
-         ]},
       ]},
     ]},
     { path: '/admin/404', component: () => import('@/views/admin/404'), hidden: true },
@@ -36,7 +32,6 @@ export const publicRouter = [
     { path: '/user/welcome', component: () =>import('@/views/user/welcome'),hidden: true},
     { path: '/user/login', component: () => import('@/views/user/Login'), hidden: true },
     { path: '/user/home', component: () => import('@/views/user/Home'), hidden: true ,children:[
-      {path:'/user/home/testdata',component: Testdata},
       {path:'/user/home/display',component: Display},
       {path:'/user/home/pdisplay',component: Pdisplay},
       {path:'/user/home/profile',component: Profile},

@@ -17,8 +17,27 @@ let newuser = async (id) => {
   let result = await http.get(url, {})
   return result
 }
+let getNationData = async () => {
+  let url = path + '/getNationData' 
+  let result = await http.get(url, {})
+  return result
+}
+let getGenderData = async () => {
+  let url = path + '/getGenderData' 
+  let result = await http.get(url, {})
+  return result
+}
+let getPoliticalData = async () => {
+  let url = path + '/getPoliticalData' 
+  let result = await http.get(url, {})
+  return result
+}
+
 export default{
   index,
   readbystuid,
-  newuser
+  newuser,
+  getNationData,
+  getGenderData,
+  getPoliticalData
 }

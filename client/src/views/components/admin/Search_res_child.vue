@@ -9,12 +9,6 @@
     
     <v-card>
       <v-card-title class="accent white--text">
-          <span class="font-weight-bold display-0.6">ATTRIBUTE: {{att.aname}}</span>
-         
-      </v-card-title>
-    </v-card>
-    <v-card>
-      <v-card-title class="accent white--text">
           <span class="font-weight-bold display-0.6">ISSUE</span>
          
       </v-card-title>
@@ -39,7 +33,6 @@
 
 <script>
 import util from '@/utils.js'
-import attributedata from '@/api/attributedata'
 import projectdata from '@/api/projectdata'
 import issuedata from '@/api/issuedata'
 import userdata from '@/api/userdata'
@@ -50,7 +43,6 @@ export default {
       data:[],
       isu:[],
       sec:[],
-      att:[],
       sid:0
       //adata:[],
     }
@@ -73,10 +65,6 @@ export default {
       if (secc.code === 200) {
         this.sec = secc.data
       }
-    },
-    async getAtt(v){
-      let attt = await attributedata.read(v)
-      return attt
     },
     async getIssue(v){
       let issu = await issuedata.readproject(v)
@@ -122,16 +110,8 @@ export default {
 
     if (this.data) {
       this.getIssue(this.data.pid)
-      let attt=this.getAtt(this.data.aid)
-      //console.log(this.sid)
-      attt.then(result => {
-        console.log(result)
-          this.att = result.data
-          this.sid = result.data.sid
-          this.getSection(this.sid)
-        })
      
-      
+  
       
     }
     

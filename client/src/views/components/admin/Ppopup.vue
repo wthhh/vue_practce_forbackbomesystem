@@ -11,7 +11,7 @@
                     <v-form class="px-3" ref="form">
                         <v-text-field label="project name" v-model="pname" prepend-icon="folder"></v-text-field>
                         <v-text-field label="project content" v-model="content" prepend-icon="edit"></v-text-field>
-                        <v-text-field label="student id" v-model="uid" prepend-icon="edit"></v-text-field>
+                        <v-text-field label="student id" v-model="stu_id" prepend-icon="edit"></v-text-field>
                         <v-spacer></v-spacer>
                         <v-btn flat right class="primary mt-0 mt-3" @click="submit">Submit</v-btn>
     
@@ -24,12 +24,12 @@
     <script>
     import projectdata from '@/api/projectdata'
     export default {
-        props:['paid'],
+        props:['psid'],
         data(){
             return{
                 pname:'',
                 content:'',
-                uid:'',
+                stu_id:'',
                 due:null,
                 show:false,
                 inputRules:[
@@ -38,28 +38,27 @@
             }
         },
         computed:{
-            getpaid:function (){
-                return this.paid
+            getpsid:function (){
+                return this.psid
             },
         },
         methods:{
             async submit(){
             console.log("this is IIIIIIIIIIIIIIPPPPPPPPPPPP child sid")
-            console.log(this.getpaid)
+            console.log(this.getpsid)
             let forrm = {
-                aid:this.getpaid,
+                sid:this.getpsid,
                 pname:this.pname,
                 content:this.content,
-                uid:this.uid
+                stu_id:this.stu_id
             }
             console.log(forrm)
             let res = null
               //console.log("now is coming to here")
             res = await projectdata.save(forrm)
-            //util.response(res, this)
-            //console.log(res)
             if (res.code === 200) {
-              console.log("add sucesss")
+                alert("添加成功")
+                location.reload()
             } else {
               console.log("add faillll")
             }

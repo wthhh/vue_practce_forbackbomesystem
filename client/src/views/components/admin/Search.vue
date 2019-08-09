@@ -18,7 +18,6 @@
 import util from '@/utils'
 import api from '@/api'
 import sectiondata from '@/api/sectiondata'
-import attributedata from '@/api/attributedata'
 import projectdata from '@/api/projectdata'
 import userdata from '@/api/userdata'
 export default {
@@ -79,9 +78,5 @@ export default {
     })*/
   
   },
-  created: function () {
-    console.log("thisis adisplay created")
-  },
- 
 }
 </script>

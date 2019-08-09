@@ -3,6 +3,16 @@ import App from './App'
 import router from './router'
 import store from '@/store'
 import htmlToPdf from '@/components/htmlToPdf'
+import ECharts from 'echarts'
+import 'echarts/lib/chart/bar'
+import 'echarts/lib/component/tooltip'
+import 'echarts/lib/component/polar'
+import 'echarts/lib/component/legend'
+import 'echarts/lib/component/title.js'
+Vue.component('v-chart', ECharts)
+
+
+
 Vue.use(htmlToPdf)
 
 
