@@ -52,7 +52,8 @@
             //util.response(res, this)
             //console.log(res)
             if (res.code === 200) {
-              console.log("add sucesss")
+                alert("添加成功")
+                location.reload()            
             } else {
               console.log("add faillll")
             }

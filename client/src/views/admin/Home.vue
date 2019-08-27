@@ -32,7 +32,7 @@
       <v-expansion-panel>
         <v-expansion-panel-content class="primary white--text" text-align-left>
           <template v-slot:header>
-            <span class="font-weight-bold headline">Secssstion</span>
+            <span class="font-weight-bold headline">Section</span>
             <Ipopup/>
           </template>
           <v-list class="py-0">
@@ -170,6 +170,9 @@ export default {
     },
     async getDataBylevel(v){
       let s_res = await sectiondata.getsectionbylevel(v)
+            console.log("eeeeeeeeeeeeeeeee")
+
+      console.log(s_res)
       if (s_res.code === 200) {
         this.data = s_res.data
       };
@@ -196,10 +199,10 @@ export default {
     }
   },
   created() {
-console.log("now into home created")
-      console.log(this.$route.params)
+      console.log(this.$route)
       this.sid = this.$route.params.sid
-      
+            console.log(this.sid)
+
       if (this.sid) {
         this.getDataBylevel(this.sid)
       }
